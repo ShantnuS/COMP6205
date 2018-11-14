@@ -22,3 +22,6 @@ C:\Users\Shant\Desktop\GitStuff\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcore
 C:\Users\Shant\Desktop\GitStuff\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\HelloHomes.pdb
 C:\Users\Shant\Desktop\GitStuff\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\HelloHomes.csproj.CopyComplete
 C:\Users\Shant\Desktop\GitStuff\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\Razor\Pages\_Layout.g.cshtml.cs
+C:\Users\Shant\Desktop\GitStuff\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\Razor\Pages\rent.g.cshtml.cs
+C:\Users\Shant\Desktop\GitStuff\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\Razor\Pages\contact.g.cshtml.cs
+C:\Users\Shant\Desktop\GitStuff\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\Razor\Pages\list.g.cshtml.cs

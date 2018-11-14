@@ -1,9 +1,40 @@
 ﻿<DOCTYPE html>
 
 <html>
-<head> Hello Homes </head>
+<head>
+    <title> Hello Homes </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/layout.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <body>
+    <!-- Title -->
     <h1>Hello Homes!</h1>
-    @RenderBody()
+
+    <!-- Navigation Bar-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="/index">Home</a></li>
+                <li><a href="/rent">Rent</a></li>
+                <li><a href="/list">List</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Body -->
+    @RenderBody();
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="text-center">
+            <span class="text-muted">Last Rendered: @DateTime.Now </span>
+        </div>
+    </div>
+
 </body>
 </html>
