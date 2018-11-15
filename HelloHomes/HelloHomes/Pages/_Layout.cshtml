@@ -12,10 +12,14 @@
 </head>
 <body>
     <!-- Title -->
-    <h1>Hello Homes!</h1>
+    <div class="title">
+        <a href="/index">
+            <img class="title_logo" src="~/images/HelloHomesLogo.png" alt="Hello Homes!" />
+        </a>
+    </div>
 
     <!-- Navigation Bar-->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li><a href="/index">Home</a></li>
@@ -27,14 +31,22 @@
     </nav>
 
     <!-- Body -->
-    @RenderBody();
+    <div class="content">
+        @RenderBody();
+    </div>
 
     <!-- Footer -->
     <div class="footer">
-        <div class="text-center">
+        <div class="footer_nav">
+            <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/admin">Admin</a></li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+        </div>
+        <div class="footer_time">
             <span class="text-muted">Last Rendered: @DateTime.Now </span>
         </div>
     </div>
-
 </body>
 </html>

@@ -11501,23 +11501,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Shant\\.nuget\\packages\\": {},
+    "C:\\Users\\Shantnu\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Shant\\Desktop\\GitStuff\\COMP6205\\HelloHomes\\HelloHomes\\HelloHomes.csproj",
+      "projectUniqueName": "C:\\Users\\Shantnu\\Desktop\\COMP6205\\HelloHomes\\HelloHomes\\HelloHomes.csproj",
       "projectName": "HelloHomes",
-      "projectPath": "C:\\Users\\Shant\\Desktop\\GitStuff\\COMP6205\\HelloHomes\\HelloHomes\\HelloHomes.csproj",
-      "packagesPath": "C:\\Users\\Shant\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Shant\\Desktop\\GitStuff\\COMP6205\\HelloHomes\\HelloHomes\\obj\\",
+      "projectPath": "C:\\Users\\Shantnu\\Desktop\\COMP6205\\HelloHomes\\HelloHomes\\HelloHomes.csproj",
+      "packagesPath": "C:\\Users\\Shantnu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Shantnu\\Desktop\\COMP6205\\HelloHomes\\HelloHomes\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Shant\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Shantnu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
