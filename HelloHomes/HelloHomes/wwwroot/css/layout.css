@@ -2,7 +2,7 @@
     text-align: center;
     padding-top: 0px;
     padding-bottom: 10px;
-    background-image: url('images/background.jpg');
+    background-image: url('../images/background.jpg');
     background-size: cover;
 }
 
@@ -21,8 +21,13 @@ img.title_logo {
 }
 
 .nav.navbar-nav > li > a:hover {
-    background-color: white;
-    color: #3a3a3a;
+    background-color: #26734d;
+    color: white;
+}
+
+.content {
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 .footer_nav {
