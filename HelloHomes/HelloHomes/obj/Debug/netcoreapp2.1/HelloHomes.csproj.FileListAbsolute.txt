@@ -52,3 +52,4 @@ C:\Users\Shantnu\Desktop\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\
 C:\Users\Shantnu\Desktop\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\HelloHomes.dll
 C:\Users\Shantnu\Desktop\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\HelloHomes.pdb
 C:\Users\Shantnu\Desktop\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\HelloHomes.csproj.CopyComplete
+C:\Users\Shantnu\Desktop\COMP6205\HelloHomes\HelloHomes\obj\Debug\netcoreapp2.1\Razor\Pages\errors\404.g.cshtml.cs

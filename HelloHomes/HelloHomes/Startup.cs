@@ -28,6 +28,8 @@ namespace HelloHomes
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+            app.UseStatusCodePages();
+            app.UseStatusCodePagesWithRedirects("/errors/{0}");
         }
     }
 }
