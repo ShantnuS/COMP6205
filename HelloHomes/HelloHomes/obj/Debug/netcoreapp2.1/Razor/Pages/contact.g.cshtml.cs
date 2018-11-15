@@ -48,7 +48,7 @@ namespace AspNetCore
             WriteLiteral("<html>\r\n");
             EndContext();
             BeginContext(103, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d4c315b15d3487a90391098c304be2b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11f814c1b5254673bcea4087434e4f1e", async() => {
                 BeginContext(109, 41, true);
                 WriteLiteral("\r\n    <h2>This is the contact page</h2>\r\n");
                 EndContext();

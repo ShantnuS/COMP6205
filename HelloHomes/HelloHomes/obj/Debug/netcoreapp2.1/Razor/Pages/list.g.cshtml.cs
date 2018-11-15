@@ -48,7 +48,7 @@ namespace AspNetCore
             WriteLiteral("<html>\r\n");
             EndContext();
             BeginContext(103, 51, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7cc18abde374dc3bfc3b30302333ad4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "79c84100feae4e6ea828a607241d654e", async() => {
                 BeginContext(109, 38, true);
                 WriteLiteral("\r\n    <h2>This is the list page</h2>\r\n");
                 EndContext();
