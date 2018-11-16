@@ -2,7 +2,15 @@
 
 <html>
 <head>
-    <title> Hello Homes </title>
+
+    @if (ViewData["Title"] != null)
+    {
+        <title class="title">Hello Homes - @ViewData["Title"]</title>
+    }
+    else
+    {
+        <title class="title">Hello Homes</title>
+    }
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,10 +31,10 @@
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li><a href="/index">Home</a></li>
-                <li><a href="/rent">Rent</a></li>
-                <li><a href="/list">List</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/Index">Home</a></li>
+                <li><a href="/Rent">Rent</a></li>
+                <li><a href="/List">List</a></li>
+                <li><a href="/Contact">Contact</a></li>
             </ul>
 
             <!-- Login/Logout section -->
@@ -38,11 +46,9 @@
                     }
                     else
                     {
-                        <form method="post" asp-page="/Account/login" asp-page-handler="Logout">
-                            <div class="input-group">
-                                <span>@User.Identity.Name</span>
+                        <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+                                <span style="color:white">Hello @User.Identity.Name!</span>
                                 <button type="submit" class="btn btn-link">Logout</button>
-                            </div>
                         </form>
                     }
                 </li>
@@ -59,9 +65,9 @@
     <div class="footer">
         <div class="footer_nav">
             <ul>
-                <li><a href="/about">About</a></li>
-                <li><a href="/admin">Admin</a></li>
-                <li><a href="/help">Help</a></li>
+                <li><a href="/About">About</a></li>
+                <li><a href="/Admin">Admin</a></li>
+                <li><a href="/Help">Help</a></li>
             </ul>
         </div>
         <div class="footer_time">

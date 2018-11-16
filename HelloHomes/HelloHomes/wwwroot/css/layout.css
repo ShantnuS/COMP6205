@@ -38,12 +38,9 @@ img.title_logo {
     padding-left: 30px;
 }
 
-.footer_nav {
-
-}
-
 .footer {
     padding: 10px;
+    /*position: absolute;*/
     position: relative;
     right: 0;
     bottom: 0;
@@ -51,3 +48,4 @@ img.title_logo {
     background-color: #3a3a3a;
     text-align: center;
 }
+

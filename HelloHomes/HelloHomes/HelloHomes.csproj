@@ -10,13 +10,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Pages\contact.cshtml">
+    <Content Update="Pages\Contact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Pages\list.cshtml">
+    <Content Update="Pages\List.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Pages\rent.cshtml">
+    <Content Update="Pages\Rent.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Pages\_Layout.cshtml">
