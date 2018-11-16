@@ -48,7 +48,7 @@ using HelloHomes.Models;
             WriteLiteral("\r\n<html>\r\n");
             EndContext();
             BeginContext(18, 51, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3e4604fb1b1243fdbb9ff616cdf0f565", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "794bd05f23644e009129487b1f673714", async() => {
                 BeginContext(24, 38, true);
                 WriteLiteral("\r\n    <h2>This is the rent page</h2>\r\n");
                 EndContext();

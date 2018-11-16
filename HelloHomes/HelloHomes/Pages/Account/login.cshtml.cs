@@ -42,8 +42,7 @@ namespace HelloHomes.Pages.Account
                 new ClaimsIdentity(
                     new[] { new Claim(ClaimTypes.Name, EmailAddress) },
                     scheme
-                )
-                );
+                ));
 
             return SignIn(user, scheme);
         }
