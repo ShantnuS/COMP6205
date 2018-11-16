@@ -20,6 +20,14 @@ img.title_logo {
     color: white;
 }
 
+.nav.navbar-nav.nav-right li a {
+    color: #26734d;
+}
+
+.nav.navbar-nav.nav-right{
+    float: right;   
+}
+
 .nav.navbar-nav > li > a:hover {
     background-color: #26734d;
     color: white;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +16,18 @@ namespace HelloHomes
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie();
+            services.AddMvc()
+                    .AddRazorPagesOptions(options => {
+                        //Razor page options
+
+                        //Authorization
+                        options.Conventions.AuthorizeFolder("/Admin");
+                        options.Conventions.AuthorizeFolder("/Account");
+                        options.Conventions.AllowAnonymousToPage("/Account/login");
+
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -26,10 +38,13 @@ namespace HelloHomes
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
+
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+
             app.UseStatusCodePages();
-            app.UseStatusCodePagesWithRedirects("/errors/{0}");
+            app.UseStatusCodePagesWithRedirects("/Errors/{0}");
         }
     }
 }
