@@ -57,7 +57,7 @@ using HelloHomes.Models;
             WriteLiteral("\r\n<html>\r\n");
             EndContext();
             BeginContext(62, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b02b10eb54ef48d48ac8657c798e7aea", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ec74ee00100d4c57af3a2c03fa62a60d", async() => {
                 BeginContext(68, 41, true);
                 WriteLiteral("\r\n    <h2>This is the contact page</h2>\r\n");
                 EndContext();

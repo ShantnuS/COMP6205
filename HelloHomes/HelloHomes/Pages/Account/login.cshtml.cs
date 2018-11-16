@@ -44,6 +44,14 @@ namespace HelloHomes.Pages.Account
                     scheme
                 ));
 
+            string returnURL = Request.Query["ReturnUrl"];
+
+            if(returnURL == null)
+            {
+                returnURL = "/Index";
+            }
+
+            Response.Redirect(returnURL);
             return SignIn(user, scheme);
         }
 

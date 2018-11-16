@@ -60,7 +60,7 @@ using HelloHomes.Models;
             WriteLiteral("\r\n<style>\r\n    .img_center {\r\n        display: block;\r\n        margin-left: auto;\r\n        margin-right: auto;\r\n        height: 40%;\r\n        padding:10px;\r\n    }\r\n</style>\r\n\r\n<h1 align=\"center\">404 Not found</h1>\r\n");
             EndContext();
             BeginContext(272, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4da9c79790bd4372b96a609770335975", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "934615792b3148679a744d199085866e", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
