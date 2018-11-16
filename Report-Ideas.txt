@@ -1,0 +1,8 @@
+- Features
+	- Error handling and redirect
+	- Bootstrap
+
+- Security
+	- SQL Injection
+	- Insecure file upload
+	- Cross site scripting
