@@ -46,12 +46,12 @@
                     }
                     else
                     {
-                        <form method="post" asp-page="/Account/Login" asp-page-handler="Logout">
-                                <span style="color:white">Hello @User.Identity.Name!</span>
-                                <button type="submit" class="btn btn-link">Logout</button>
+                        <form style="padding-top:7px; padding-bottom:0px;" method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+                            <a href="/Account/Profile/@User.Identity.Name" style="color:turquoise;padding-right:10px;">Hello @User.Identity.Name!</a>
+                            <button type="submit" class="btn btn-primary">Logout</button>
                         </form>
                     }
-                </li>
+                    </li>
             </ul>
         </div>
     </nav>
@@ -60,6 +60,7 @@
     <div class="content">
         @RenderBody()
     </div>
+    
 
     <!-- Footer -->
     <div class="footer">
