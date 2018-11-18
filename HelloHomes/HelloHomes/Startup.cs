@@ -44,7 +44,7 @@ namespace HelloHomes
             app.UseMvcWithDefaultRoute();
 
             app.UseStatusCodePages();
-            app.UseStatusCodePagesWithRedirects("/Errors/{0}");
+            app.UseStatusCodePagesWithRedirects("/Error/{0}");
         }
     }
 }
