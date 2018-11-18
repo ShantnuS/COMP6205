@@ -25,8 +25,8 @@ namespace HelloHomes
                         //Authorization
                         options.Conventions.AuthorizeFolder("/Admin");
                         options.Conventions.AuthorizeFolder("/Account");
-                        options.Conventions.AllowAnonymousToPage("/Account/login");
-
+                        options.Conventions.AllowAnonymousToPage("/Account/Login");
+                        options.Conventions.AllowAnonymousToPage("/Account/SignUp");
                     });
         }
 
