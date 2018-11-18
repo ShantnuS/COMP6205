@@ -1,0 +1,51 @@
+﻿.title {
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+}
+
+img.title_logo {
+    max-width: 50%;
+    max-height: 25%;
+}
+
+.navbar-default {
+    background-color: #3a3a3a;
+    border-color: #3a3a3a;
+    max-height: 5px;
+}
+
+.nav.navbar-nav li a {
+    color: white;
+}
+
+.nav.navbar-nav.nav-right li a {
+    color: #26734d;
+}
+
+.nav.navbar-nav.nav-right{
+    float: right;   
+}
+
+.nav.navbar-nav > li > a:hover {
+    background-color: #26734d;
+    color: white;
+}
+
+.content {
+    padding-right: 10%;
+    padding-left: 10%;
+    min-height: 100%;
+}
+
+.footer {
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #3a3a3a;
+    text-align: center;
+}
+
