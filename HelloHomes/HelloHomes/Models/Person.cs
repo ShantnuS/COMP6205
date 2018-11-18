@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelloHomes.Models
 {
-    public class User
+    public class Person
     {
 
         public long Id { get; set; }

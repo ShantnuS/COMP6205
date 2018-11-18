@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using HelloHomes.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,17 @@ namespace HelloHomes.Pages.Account
         {
             var isValidUser = EmailAddress == "admin" && Password == "password";
 
+            //Example of using models to retrieve things
+            var person = new Person();
+
+            string PersonFullName = person.FullName;
+
+            if (PersonFullName == null)
+            {
+                PersonFullName = "Jimbo";
+            }
+            //End Example
+
             if (!isValidUser)
             {
                 ModelState.AddModelError("", "Invalid email or password");
@@ -40,7 +52,8 @@ namespace HelloHomes.Pages.Account
             var scheme = CookieAuthenticationDefaults.AuthenticationScheme;
             var user = new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    new[] { new Claim(ClaimTypes.Name, EmailAddress) },
+                    //new[] { new Claim(ClaimTypes.Name, EmailAddress) },
+                    new[] { new Claim(ClaimTypes.Name, PersonFullName) },
                     scheme
                 ));
 
