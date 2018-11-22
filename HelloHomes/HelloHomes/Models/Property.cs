@@ -30,6 +30,9 @@ namespace HelloHomes.Models
         //Cost of property per month
         public decimal RentPerMonth { get; set; }
 
+        //ID of Landlord 
+        public long LandlordID { get; set; }
+
         //Name of landlord
         public string LandlordName { get; set; }
 
