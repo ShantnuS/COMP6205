@@ -24,24 +24,21 @@ namespace HelloHomes.Pages.Account
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
-            var isValidUser = EmailAddress == "admin" && Password == "password";
+            var personService = new PersonService();
+            var person =  await personService.FindByEmailAsync(EmailAddress, Password);
 
-            //Example of using models to retrieve things
-            var person = new Person();
-
-            string PersonFullName = person.FullName;
-
-            if (PersonFullName == null)
-            {
-                PersonFullName = "Jimbo";
-            }
-            //End Example
+            var isValidUser = person != null;
+            string PersonFullName = "Null";
 
             if (!isValidUser)
             {
                 ModelState.AddModelError("", "Invalid email or password");
+            }
+            else
+            {
+                PersonFullName = person.FullName;
             }
 
             if (!ModelState.IsValid)
@@ -52,8 +49,7 @@ namespace HelloHomes.Pages.Account
             var scheme = CookieAuthenticationDefaults.AuthenticationScheme;
             var user = new ClaimsPrincipal(
                 new ClaimsIdentity(
-                    //new[] { new Claim(ClaimTypes.Name, EmailAddress) },
-                    new[] { new Claim(ClaimTypes.Name, PersonFullName) },
+                    new[] { new Claim(ClaimTypes.Name, person.EmailAddress) },
                     scheme
                 ));
 
