@@ -9,6 +9,8 @@ namespace HelloHomes.Models
 {
     public class Property
     {
+        public static enum ApprovalEnum { Pending, Approved, Rejected }
+
         public long Id { get; set; }
 
         [Required]
@@ -47,7 +49,7 @@ namespace HelloHomes.Models
          * 1 = Approved 
          * 2 = Rejected
          */
-        public int ApprovalStatus { get; set; }
+        public ApprovalEnum ApprovalStatus { get; set; }
 
         [Required]
         //Reason for approval/rejection

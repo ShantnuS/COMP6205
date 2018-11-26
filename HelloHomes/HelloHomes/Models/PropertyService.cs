@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,29 +8,85 @@ namespace HelloHomes.Models
 {
     public class PropertyService : IPropertyService
     {
-        public Task<Property> FindAsync(long id)
+        private readonly HelloHomesPropertyContext _context;
+
+        public PropertyService()
         {
-            throw new NotImplementedException();
+            var connString = Startup.propertyConnString;
+            var options = new DbContextOptionsBuilder<HelloHomesPropertyContext>()
+                .UseSqlServer(connString)
+                .Options;
+
+            _context = new HelloHomesPropertyContext(options);
         }
 
-        public Task<Property[]> GetAllApprovedAsync(int? count = null, int? page = null)
+        public PropertyService(HelloHomesPropertyContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+        public Task<Property> FindAsync(long id)
+        {
+            return _context.Property.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public IQueryable<Property> GetAll(int? count = null, int? page = null)
+        {
+            var actualCount = count.GetValueOrDefault(10);
+
+            return _context.Property
+                        .Skip(actualCount * page.GetValueOrDefault(0))
+                        .Take(actualCount);
         }
 
         public Task<Property[]> GetAllAsync(int? count = null, int? page = null)
         {
-            throw new NotImplementedException();
+            return GetAll(count, page).ToArrayAsync();
+        }
+
+        public Task<Property[]> GetAllApprovedAsync(int? count = null, int? page = null)
+        {
+            return Task.Run(() =>
+            {
+                Property[] ret = { };
+
+                foreach (Property property in GetAll(count, page))
+                {
+                    if (property.ApprovalStatus == Property.ApprovalEnum.Approved)
+                    {
+                        ret.Append(property);
+                    }
+                }
+
+                return ret;
+            });
         }
 
         public Task<Property[]> GetAllUnapprovedAsync(int? count = null, int? page = null)
         {
-            throw new NotImplementedException();
+            return Task.Run(() =>
+            {
+                Property[] ret = { };
+
+                foreach (Property property in GetAll(count, page))
+                {
+                    if (property.ApprovalStatus == Property.ApprovalEnum.Pending)
+                    {
+                        ret.Append(property);
+                    }
+                }
+
+                return ret;
+            });
         }
 
-        public Task SaveAsync(Property property)
+        public async Task SaveAsync(Property property)
         {
-            throw new NotImplementedException();
+            var isNew = property.Id == default(long);
+
+            _context.Entry(property).State = isNew ? EntityState.Added : EntityState.Modified;
+
+            await _context.SaveChangesAsync();
         }
     }
 }
