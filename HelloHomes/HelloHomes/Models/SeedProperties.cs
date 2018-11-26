@@ -11,8 +11,8 @@ namespace HelloHomes.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new HelloHomesContext(
-                serviceProvider.GetRequiredService<DbContextOptions<HelloHomesContext>>()))
+            using (var context = new HelloHomesPropertyContext(
+                serviceProvider.GetRequiredService<DbContextOptions<HelloHomesPropertyContext>>()))
             {
                 // Look for any Properties.
                 if (context.Property.Any())

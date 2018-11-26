@@ -42,15 +42,21 @@ namespace HelloHomes
                         options.Conventions.AllowAnonymousToPage("/Account/SignUp");
                     });
 
-            personConnString = Configuration.GetConnectionString("HelloHomesContext");
-
+            //Ignore this one
             services.AddDbContext<HelloHomesContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("HelloHomesContext")));
 
+            //Person Database
             personConnString = Configuration.GetConnectionString("HelloHomesPersonContext");
 
             services.AddDbContext<HelloHomesPersonContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("HelloHomesPersonContext")));
+
+            //Property Database
+            propertyConnString = Configuration.GetConnectionString("HelloHomesPropertyContext");
+
+            services.AddDbContext<HelloHomesPropertyContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("HelloHomesPropertyContext")));
         
     }
 

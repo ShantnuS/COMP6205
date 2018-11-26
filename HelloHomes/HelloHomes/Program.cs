@@ -39,7 +39,7 @@ namespace HelloHomes
                 //Seed the Property DB
                 try
                 {
-                    var context = services.GetRequiredService<HelloHomesContext>();
+                    var context = services.GetRequiredService<HelloHomesPropertyContext>();
                     context.Database.Migrate();
                     SeedProperties.Initialize(services);
                 }
