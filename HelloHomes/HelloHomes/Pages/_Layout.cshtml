@@ -46,8 +46,11 @@
                     }
                     else
                     {
+                        var personService = new PersonService();
+                        var person = await personService.FindByEmailAsync(User.Identity.Name);
+
                         <form style="padding-top:7px; padding-bottom:0px;" method="post" asp-page="/Account/Login" asp-page-handler="Logout">
-                            <a href="/Account/Profile/@User.Identity.Name" style="color:turquoise;padding-right:10px;">Hello @User.Identity.Name!</a>
+                            <a href="/Account/Profile" style="color:turquoise;padding-right:10px;">Hello @person.FullName!</a>
                             <button type="submit" class="btn btn-primary">Logout</button>
                         </form>
                     }
@@ -67,7 +70,7 @@
         <div class="footer_nav">
             <ul>
                 <li><a href="/About">About</a></li>
-                <li><a href="/Admin/Admintest">Admin</a></li>
+                <li><a href="/Admin/Admin">Admin</a></li>
                 <li><a href="/Help">Help</a></li>
             </ul>
         </div>
