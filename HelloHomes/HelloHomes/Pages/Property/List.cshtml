@@ -1,7 +1,24 @@
 ﻿@page 
+@{ 
+    var personService = new PersonService();
+    var person = await personService.FindByEmailAsync(User.Identity.Name);
 
-<html>
-<body>
-    <h2>This is the list page</h2>
-</body>
-</html>
+    var propertyService = new PropertyService();
+    var properties = await propertyService.GetAllApprovedAsync();
+
+    ViewData["Title"] = person.FullName;
+}
+
+<div>
+    <ul>
+        @foreach (Property property in properties)
+        {
+            <li>Property: @property.Name</li>
+            <li>Description: @property.Description</li>
+            <li>Bedrooms: @property.Bedrooms</li>
+            <li>Rent: £@property.RentPerMonth pcm</li>
+            <li>Status: @property.ApprovalStatus</li>
+            <li>Admin Comments: @property.ApprovalComment</li>
+        }
+    </ul>
+</div>
