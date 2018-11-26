@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using HelloHomes.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -31,6 +32,10 @@ namespace HelloHomes.Pages.Property
         [Display(Name = "Rent (£ pcm)")]
         public decimal RentPerMonth { get; set; }
 
+        [BindProperty]
+        [Display(Name = "Image of Property")]
+        public IFormFile Image { get; set; }
+
         public async Task<IActionResult> OnPostAsync()
         {
             var personService = new PersonService();
@@ -52,8 +57,19 @@ namespace HelloHomes.Pages.Property
                 ApprovalComment = ""
             };
 
+            if (Image != null)
+            {
+                using (var stream = new System.IO.MemoryStream())
+                {
+                    await Image.CopyToAsync(stream);
+
+                    property.Image = stream.ToArray();
+                    property.ImageContentType = Image.ContentType;
+                }
+            }
+
             await propertyService.SaveAsync(property);
             return RedirectToPage("/List");
         }
-    }
+    }   
 }

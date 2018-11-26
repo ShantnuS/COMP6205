@@ -12,13 +12,21 @@
 <div>
     @foreach (Property property in properties)
     {
-        <ul>
-            <li>Property: @property.Name</li>
-            <li>Description: @property.Description</li>
-            <li>Bedrooms: @property.Bedrooms</li>
-            <li>Rent: £@property.RentPerMonth pcm</li>
-            <li>Status: @property.ApprovalStatus</li>
-            <li>Admin Comments: @property.ApprovalComment</li>
-        </ul>
+        //<div class="row">
+            <div class="col-md-8">
+                <ul>
+                    <li>Property: @property.Name</li>
+                    <li>Description: @property.Description</li>
+                    <li>Bedrooms: @property.Bedrooms</li>
+                    <li>Rent: £@property.RentPerMonth pcm</li>
+                    <li>Status: @property.ApprovalStatus</li>
+                    <li>Admin Comments: @property.ApprovalComment</li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <img class="img img-thumbnail" src="@property.GetInlineImageSrc()" />
+            </div>
+        //</div>
     }
 </div>
