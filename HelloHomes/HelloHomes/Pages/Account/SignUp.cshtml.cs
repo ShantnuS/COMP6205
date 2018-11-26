@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using HelloHomes.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -31,8 +32,35 @@ namespace HelloHomes.Pages.Account
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        public void OnGet()
+        public async Task<IActionResult> OnPostAsync()
         {
+            var personService = new PersonService();
+
+            var pExist = await personService.FindByEmailAsync(EmailAddress, Password);
+
+            var isValidUser = pExist != null;
+
+            if (isValidUser)
+            {
+                ModelState.AddModelError("", "Email already in use!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            //Place to put data into
+            Person person = new Person
+            {
+                EmailAddress = EmailAddress,
+                Password = Password,
+                FullName = FullName,
+                PhoneNumber = PhoneNumber
+            };
+
+            await personService.SaveAsync(person);
+            return RedirectToPage("/Login");
         }
     }
 }
