@@ -40,6 +40,7 @@ namespace HelloHomes
                         options.Conventions.AuthorizeFolder("/Account");
                         options.Conventions.AllowAnonymousToPage("/Account/Login");
                         options.Conventions.AllowAnonymousToPage("/Account/SignUp");
+                        options.Conventions.AuthorizePage("/List");
                     });
 
             //Person Database
