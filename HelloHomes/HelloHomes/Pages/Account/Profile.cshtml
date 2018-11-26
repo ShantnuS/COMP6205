@@ -1,0 +1,16 @@
+﻿@page
+@{
+    var personService = new PersonService();
+    var person = await personService.FindByEmailAsync(User.Identity.Name);
+
+    ViewData["Title"] = person.FullName;
+}
+
+<div>
+    <ul>
+        <li>Full Name: @person.FullName</li>
+        <li>Email: @person.EmailAddress</li>
+        <li>Phone Number: @person.PhoneNumber</li>
+    </ul>
+
+</div>
