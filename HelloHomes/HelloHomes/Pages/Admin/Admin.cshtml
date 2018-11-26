@@ -6,14 +6,15 @@
 
 <html>
 <body>
-    <h2>Listing Approval Page</h2>
-
     @if (person.IsAdmin)
     {
+        <h2>Listing Approval Page</h2>
         <h3>You are an admin </h3>
-    }else
+    }
+    else
     {
         <h3>Sorry you are not allowed to see this! </h3>
+        <h4>You have to be an admin! </h4>
     }
 
 </body>
