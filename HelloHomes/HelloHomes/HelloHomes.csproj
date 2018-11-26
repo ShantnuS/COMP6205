@@ -27,10 +27,10 @@
     <Content Update="Pages\Contact.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Pages\List.cshtml">
+    <Content Update="Pages\Property\List.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Pages\Rent.cshtml">
+    <Content Update="Pages\Property\Rent.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Pages\_Layout.cshtml">

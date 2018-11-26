@@ -32,8 +32,8 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li><a href="/Index">Home</a></li>
-                <li><a href="/Rent">Rent</a></li>
-                <li><a href="/List">List</a></li>
+                <li><a href="/Property/Rent">Rent</a></li>
+                <li><a href="/Property/List">List</a></li>
                 <li><a href="/Contact">Contact</a></li>
             </ul>
 
@@ -61,7 +61,9 @@
 
     <!-- Body -->
     <div class="content">
-        @RenderBody()
+        <div class="inner-content">
+            @RenderBody()
+        </div>
     </div>
     
 
