@@ -46,38 +46,62 @@ namespace HelloHomes.Models
 
         public Task<Property[]> GetAllApprovedAsync(int? count = null, int? page = null)
         {
-            return Task.Run(() =>
-            {
-                Property[] ret = { };
+            Func<Property[]> function = () =>
+               {
+                   Property[] ret = { };
 
-                foreach (Property property in GetAll(count, page))
-                {
-                    if (property.ApprovalStatus == Property.ApprovalEnum.Approved)
-                    {
-                        ret.Append(property);
-                    }
-                }
+                   foreach (Property property in GetAll(count, page))
+                   {
+                       if (property.ApprovalStatus == Property.ApprovalEnum.Approved)
+                       {
+                           ret.Append(property);
+                       }
+                   }
 
-                return ret;
-            });
+                   return ret;
+               };
+
+            return Task.Run(function);
         }
 
         public Task<Property[]> GetAllUnapprovedAsync(int? count = null, int? page = null)
         {
-            return Task.Run(() =>
-            {
-                Property[] ret = { };
+            Func<Property[]> function = () =>
+               {
+                   Property[] ret = { };
 
-                foreach (Property property in GetAll(count, page))
-                {
-                    if (property.ApprovalStatus == Property.ApprovalEnum.Pending)
-                    {
-                        ret.Append(property);
-                    }
-                }
+                   foreach (Property property in GetAll(count, page))
+                   {
+                       if (property.ApprovalStatus == Property.ApprovalEnum.Pending)
+                       {
+                           ret.Append(property);
+                       }
+                   }
 
-                return ret;
-            });
+                   return ret;
+               };
+
+            return Task.Run(function);
+        }
+
+        public Task<Property[]> GetAllForLandlordAsync(long landlordId)
+        {
+            Func<Property[]> function = () =>
+               {
+                   Property[] ret = { };
+
+                   foreach (Property property in GetAll())
+                   {
+                       if (property.LandlordID == landlordId)
+                       {
+                           ret.Append(property);
+                       }
+                   }
+
+                   return ret;
+               };
+
+            return Task.Run(function);
         }
 
         public async Task SaveAsync(Property property)
