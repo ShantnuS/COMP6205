@@ -1,7 +1,19 @@
-﻿@page 
+﻿@page
+@{
+    var propertyService = new PropertyService();
+    var properties = await propertyService.GetAllApprovedAsync();
+}
 
-<html>
-<body>
-    <h2>This is the rent page</h2>
-</body>
-</html>
+<div>
+    @foreach (Property property in properties)
+    {
+        <ul>
+            <li>Property: @property.Name</li>
+            <li>Description: @property.Description</li>
+            <li>Bedrooms: @property.Bedrooms</li>
+            <li>Rent: £@property.RentPerMonth pcm</li>
+            <li>Landlord: @property.LandlordName</li>
+            <li>Contact Number: @property.LandlordNumber</li>
+        </ul>
+    }
+</div>

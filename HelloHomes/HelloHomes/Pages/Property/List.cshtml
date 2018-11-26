@@ -4,21 +4,21 @@
     var person = await personService.FindByEmailAsync(User.Identity.Name);
 
     var propertyService = new PropertyService();
-    var properties = await propertyService.GetAllApprovedAsync();
+    var properties = await propertyService.GetAllForLandlordAsync(person.Id);
 
     ViewData["Title"] = person.FullName;
 }
 
 <div>
-    <ul>
-        @foreach (Property property in properties)
-        {
+    @foreach (Property property in properties)
+    {
+        <ul>
             <li>Property: @property.Name</li>
             <li>Description: @property.Description</li>
             <li>Bedrooms: @property.Bedrooms</li>
             <li>Rent: £@property.RentPerMonth pcm</li>
             <li>Status: @property.ApprovalStatus</li>
             <li>Admin Comments: @property.ApprovalComment</li>
-        }
-    </ul>
+        </ul>
+    }
 </div>
