@@ -68,3 +68,7 @@ img.title_logo {
     text-align: center;
 }
 
+    .footer li {
+        list-style-type: none;
+    }
+
