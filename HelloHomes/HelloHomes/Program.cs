@@ -23,6 +23,7 @@ namespace HelloHomes
             {
                 var services = scope.ServiceProvider;
 
+                //Seed the Person DB
                 try
                 {
                     var context = services.GetRequiredService<HelloHomesPersonContext>();
@@ -32,7 +33,20 @@ namespace HelloHomes
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred seeding the DB.");
+                    logger.LogError(ex, "An error occurred seeding the Person DB.");
+                }
+
+                //Seed the Property DB
+                try
+                {
+                    var context = services.GetRequiredService<HelloHomesContext>();
+                    context.Database.Migrate();
+                    SeedProperties.Initialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred seeding the Properties DB.");
                 }
             }
 

@@ -15,7 +15,7 @@ namespace HelloHomes.Models
             using (var context = new HelloHomesPersonContext(
                 serviceProvider.GetRequiredService<DbContextOptions<HelloHomesPersonContext>>()))
             {
-                // Look for any movies.
+                // Look for any Persons.
                 if (context.Person.Any())
                 {
                     return;   // DB has been seeded

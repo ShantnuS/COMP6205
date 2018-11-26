@@ -16,7 +16,8 @@ namespace HelloHomes
     public class Startup
     {
 
-        public static string personConnString; 
+        public static string personConnString;
+        public static string propertyConnString;
 
         public Startup(IConfiguration configuration)
         {
@@ -41,7 +42,9 @@ namespace HelloHomes
                         options.Conventions.AllowAnonymousToPage("/Account/SignUp");
                     });
 
-           services.AddDbContext<HelloHomesContext>(options =>
+            personConnString = Configuration.GetConnectionString("HelloHomesContext");
+
+            services.AddDbContext<HelloHomesContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("HelloHomesContext")));
 
             personConnString = Configuration.GetConnectionString("HelloHomesPersonContext");
