@@ -9,7 +9,7 @@ namespace HelloHomes.Models
 {
     public class Property
     {
-        public static enum ApprovalEnum { Pending, Approved, Rejected }
+        public enum ApprovalEnum { Pending, Approved, Rejected }
 
         public long Id { get; set; }
 

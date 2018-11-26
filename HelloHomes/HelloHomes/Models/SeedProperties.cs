@@ -30,7 +30,7 @@ namespace HelloHomes.Models
                         LandlordID = 1,
                         LandlordName = "Admin Bob",
                         LandlordNumber = "0999",
-                        ApprovalStatus = 1,
+                        ApprovalStatus = Property.ApprovalEnum.Approved,
                         ApprovalComment = "Looks good!"
                     },
 
@@ -43,7 +43,7 @@ namespace HelloHomes.Models
                         LandlordID = 1,
                         LandlordName = "Admin Bob",
                         LandlordNumber = "0999",
-                        ApprovalStatus = 1,
+                        ApprovalStatus = Property.ApprovalEnum.Approved,
                         ApprovalComment = "Looks good!"
                     }
                 );
