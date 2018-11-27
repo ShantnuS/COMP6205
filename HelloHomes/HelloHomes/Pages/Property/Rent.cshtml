@@ -4,16 +4,49 @@
     var properties = await propertyService.GetAllApprovedAsync();
 }
 
-<div>
+<style>
+    .row {
+        overflow: hidden;
+    }
+    .property_image {
+        float: left;
+        margin-top:10px;
+    }
+    .property_info {
+        overflow: hidden;
+        padding-left:25px;
+        margin-bottom:10px;
+    }
+
+    .property_description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+</style>
+
+<div class="rent_list" style="padding-left:10%; padding-right:10%">
     @foreach (Property property in properties)
     {
-        <ul>
-            <li>Property: @property.Name</li>
-            <li>Description: @property.Description</li>
-            <li>Bedrooms: @property.Bedrooms</li>
-            <li>Rent: £@property.RentPerMonth pcm</li>
-            <li>Landlord: @property.LandlordName</li>
-            <li>Contact Number: @property.LandlordNumber</li>
-        </ul>
+    <div class="row">
+        <div class="property_image">
+            @if (property.Image != null)
+            {
+                <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="@property.GetInlineImageSrc()" />
+            }
+            else
+            {
+                <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="~/images/home_icon.png" />
+            }
+        </div>
+        <div class="property_info">
+            <h3><a asp-page="/Property/Property" asp-route-id="@property.Id">@property.Name</a></h3>
+            <p class="property_description">@property.Description</p>
+            <p> <b>£@property.RentPerMonth pcm</b></p>
+        </div>
+        <hr />
+    </div>
     }
 </div>
