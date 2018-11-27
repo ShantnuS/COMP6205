@@ -30,10 +30,10 @@
     }
 </style>
 
-<h2>Reject Property</h2>
-
 @if (person.IsAdmin)
 {
+
+    <h2>Reject Property</h2>
 
     <div class="main_info">
         <p class="property_name">@property.Name</p>
@@ -86,4 +86,8 @@
             </div>
         </div>
     </form>
+}
+else
+{
+    Response.Redirect("~/Error/404");
 }

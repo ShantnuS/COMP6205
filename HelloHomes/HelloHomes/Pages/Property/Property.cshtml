@@ -7,9 +7,9 @@
     {
         ViewData["Title"] = property.Name;
     }
-    catch (Exception e)
+    catch (Exception)
     {
-        Response.Redirect("/Error/404");
+        Response.Redirect("~/Error/404");
     }
 
 }
@@ -33,29 +33,40 @@
     }
 </style>
 
-<div class="main_info">
-    <p class="property_name">@property.Name</p>
-    <p class="property_price"> <b>£@property.RentPerMonth pcm</b></p>
-</div>
-<hr />
-
-<div class="property_image">
-    @if (property.Image != null)
+@if (property != null)
+{
+    @if (property.ApprovalStatus != Property.ApprovalEnum.Approved)
     {
-        <img class="img" style="max-height:500px;background-color: #26734d;" align="middle" src="@property.GetInlineImageSrc()" />
+        <p style="color:red; text-align:center;"> WARNING! This property has not been approved!</p>
     }
-    else
-    {
-        <img class="img" style="max-height:500px;background-color: #26734d;" align="middle" src="~/images/home_icon.png" />
-    }
-</div>
+    <div class="main_info">
+        <p class="property_name">@property.Name</p>
+        <p class="property_price"> <b>£@property.RentPerMonth pcm</b></p>
+    </div>
+    <hr />
 
-<p><b>Description</b></p>
-<p>@property.Description</p>
-<hr />
+    <div class="property_image">
+        @if (property.Image != null)
+        {
+            <img class="img" style="max-height:500px;background-color: #26734d;" align="middle" src="@property.GetInlineImageSrc()" />
+        }
+        else
+        {
+            <img class="img" style="max-height:500px;background-color: #26734d;" align="middle" src="~/images/home_icon.png" />
+        }
+    </div>
 
-<div class="additional_info">
-    <p><b>Bedrooms: </b>@property.Bedrooms</p>
-    <p><b>Landlord: </b>@property.LandlordName</p>
-    <p><b>Contact Number:</b> @property.LandlordNumber</p>
-</div>
+    <p><b>Description</b></p>
+    <p>@property.Description</p>
+    <hr />
+
+    <div class="additional_info">
+        <p><b>Bedrooms: </b>@property.Bedrooms</p>
+        <p><b>Landlord: </b>@property.LandlordName</p>
+        <p><b>Contact Number:</b> @property.LandlordNumber</p>
+    </div>
+}
+else 
+{
+    Response.Redirect("~/Error/404");
+}
