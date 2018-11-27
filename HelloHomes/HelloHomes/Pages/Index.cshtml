@@ -1,6 +1,9 @@
 ﻿@page 
 @{ 
     ViewData["Title"] = "Home";
+
+    var propertyService = new PropertyService();
+    var properties = await propertyService.GetAllApprovedAsync();
 }
 
 <link rel="stylesheet" href="~/css/index.css" />
@@ -22,4 +25,83 @@
         <button class="btn btn_list">List</button>
     </a>
     <p class="bannertext bannertext_bottom">a property</p>
+</div>
+
+<style>
+    .row {
+        overflow: hidden;
+    }
+
+    .property_image {
+        float: left;
+        margin-top: 10px;
+    }
+
+    .property_info {
+        overflow: hidden;
+        padding-left: 25px;
+        margin-bottom: 10px;
+    }
+
+    .property_description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+    }
+</style>
+
+<div class="rent_list" style="padding-left:10%; padding-right:10%">
+    <!--Property of the day -->
+    @{
+        int day = (int)DateTime.Now.DayOfWeek;
+        int propertyOfTheDayNum = properties.Length % day;
+
+        Models.Property propertyOfTheDay = properties[propertyOfTheDayNum];
+    }
+    <div class="row">
+        <h3> Property of the day! </h3>
+        <div class="property_image">
+            @if (propertyOfTheDay.Image != null)
+            {
+                <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="@propertyOfTheDay.GetInlineImageSrc()" />
+            }
+            else
+            {
+                <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="~/images/home_icon.png" />
+            }
+        </div>
+        <div class="property_info">
+            <h3><a asp-page="/Property/Property" asp-route-id="@propertyOfTheDay.Id">@propertyOfTheDay.Name</a></h3>
+            <p class="property_description">@propertyOfTheDay.Description</p>
+            <p> <b>£@propertyOfTheDay.RentPerMonth pcm</b></p>
+        </div>
+        <hr />
+    </div>
+
+    <!--Random Property -->
+    @{
+        Random ran = new Random();
+        Models.Property randomProperty = properties[ran.Next(0, properties.Length)];
+    }
+    <div class="row">
+        <h3> Random property! </h3>
+        <div class="property_image">
+            @if (randomProperty.Image != null)
+            {
+                <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="@randomProperty.GetInlineImageSrc()" />
+            }
+            else
+            {
+                <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="~/images/home_icon.png" />
+            }
+        </div>
+        <div class="property_info">
+            <h3><a asp-page="/Property/Property" asp-route-id="@randomProperty.Id">@randomProperty.Name</a></h3>
+            <p class="property_description">@randomProperty.Description</p>
+            <p> <b>£@randomProperty.RentPerMonth pcm</b></p>
+        </div>
+        <hr />
+    </div>
+
 </div>

@@ -2,6 +2,8 @@
 @{
     var propertyService = new PropertyService();
     var properties = await propertyService.GetAllApprovedAsync();
+
+    ViewData["Title"] = "Rent";
 }
 
 <style>

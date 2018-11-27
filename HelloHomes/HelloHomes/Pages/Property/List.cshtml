@@ -7,7 +7,7 @@
     var propertyService = new PropertyService();
     var properties = await propertyService.GetAllForLandlordAsync(person.Id);
 
-    ViewData["Title"] = person.FullName;
+    ViewData["Title"] = "List";
 }
 
 <style>
@@ -57,44 +57,44 @@
     {
         @foreach (Property property in properties)
         {
-    <div class="row">
-        <div class="property_image">
-            @if (property.Image != null)
-            {
-                <img class="img img-thumbnail" alt="@property.Name" style="max-height:100px;background-color: #26734d;" src="@property.GetInlineImageSrc()" />
-            }
-            else
-            {
-                <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="~/images/home_icon.png" />
-            }
-        </div>
-        <div class="approval_image">
-            @if (property.ApprovalStatus == Property.ApprovalEnum.Approved)
-            {
-                <img src="~/images/status_happy.png" style="max-height:100px; overflow:hidden;" title="Approved!" alt="Approved!">
-            }
-            else if (property.ApprovalStatus == Property.ApprovalEnum.Rejected)
-            {
-                <img src="~/images/status_sad.png" style="max-height:100px; overflow:hidden;" title="Rejected!" alt="Rejected!">
-            }
-            else
-            {
-                <img src="~/images/status_neutral.png" style="max-height:100px; overflow:hidden;" title="Pending..." alt="Pending...">
-            }
+            <div class="row">
+                <div class="property_image">
+                    @if (property.Image != null)
+                    {
+                        <img class="img img-thumbnail" alt="@property.Name" style="max-height:100px;background-color: #26734d;" src="@property.GetInlineImageSrc()" />
+                    }
+                    else
+                    {
+                        <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="~/images/home_icon.png" />
+                    }
+                </div>
+                <div class="approval_image">
+                    @if (property.ApprovalStatus == Property.ApprovalEnum.Approved)
+                    {
+                        <img src="~/images/status_happy.png" style="max-height:100px; overflow:hidden;" title="Approved!" alt="Approved!">
+                    }
+                    else if (property.ApprovalStatus == Property.ApprovalEnum.Rejected)
+                    {
+                        <img src="~/images/status_sad.png" style="max-height:100px; overflow:hidden;" title="Rejected!" alt="Rejected!">
+                    }
+                    else
+                    {
+                        <img src="~/images/status_neutral.png" style="max-height:100px; overflow:hidden;" title="Pending..." alt="Pending...">
+                    }
 
-        </div>
-        <div class="property_info">
-            <h3><a asp-page="/Property/Property" asp-route-id="@property.Id">@property.Name</a></h3>
-            <p class="property_description">@property.Description</p>
-            <p> <b>£@property.RentPerMonth pcm</b></p>
-        </div>
-        @if (property.ApprovalStatus != Property.ApprovalEnum.Pending)
-        {
-            <p><b>Comment:</b> @property.ApprovalComment</p>
-        }
-        <hr />
-    </div>
-        }
+                </div>
+                <div class="property_info">
+                    <h3><a asp-page="/Property/Property" asp-route-id="@property.Id">@property.Name</a></h3>
+                    <p class="property_description">@property.Description</p>
+                    <p> <b>£@property.RentPerMonth pcm</b></p>
+                </div>
+                @if (property.ApprovalStatus != Property.ApprovalEnum.Pending)
+                {
+                    <p><b>Comment:</b> @property.ApprovalComment</p>
+                }
+                <hr />
+            </div>
+         }
     }
     else
     {
