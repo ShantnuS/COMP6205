@@ -10,8 +10,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HelloHomes.Pages.Property
 {
-    public class AddPropertyModel : PageModel
+    public class AddEditPropertyModel : PageModel
     {
+        [FromRoute]
+        public long? Id { get; set; }
+
+        public bool IsNewProperty
+        {
+            get { return Id == null; }
+        }
+
         [BindProperty]
         [Required]
         [Display(Name = "Property Name")]
