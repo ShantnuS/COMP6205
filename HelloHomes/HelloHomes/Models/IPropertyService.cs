@@ -12,5 +12,6 @@ namespace HelloHomes.Models
         Task<Property[]> GetAllApprovedAsync(int? count = null, int? page = null);
         Task<Property[]> GetAllUnapprovedAsync(int? count = null, int? page = null);
         Task SaveAsync(Property property);
+        Task UpdateApprovalStatusAsync(long id, Property.ApprovalEnum approvalEnum, string approvalComment);
     }
 }

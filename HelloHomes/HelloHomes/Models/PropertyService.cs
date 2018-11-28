@@ -67,5 +67,13 @@ namespace HelloHomes.Models
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateApprovalStatusAsync(long id, Property.ApprovalEnum approvalEnum, string approvalComment)
+        {
+            Property property = _context.Property.First(x => x.Id == id);
+            property.ApprovalStatus = approvalEnum;
+            property.ApprovalComment = approvalComment;
+            await _context.SaveChangesAsync();
+        }
     }
 }

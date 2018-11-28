@@ -1,32 +1,104 @@
-﻿@page 
-@{ 
+﻿@page
+
+@{
     var personService = new PersonService();
     var person = await personService.FindByEmailAsync(User.Identity.Name);
 
     var propertyService = new PropertyService();
     var properties = await propertyService.GetAllForLandlordAsync(person.Id);
 
-    ViewData["Title"] = person.FullName;
+    ViewData["Title"] = "List";
 }
 
-<div>
-    @foreach (Property property in properties)
-    {
-        //<div class="row">
-            <div class="col-md-8">
-                <ul>
-                    <li>Property: @property.Name</li>
-                    <li>Description: @property.Description</li>
-                    <li>Bedrooms: @property.Bedrooms</li>
-                    <li>Rent: £@property.RentPerMonth pcm</li>
-                    <li>Status: @property.ApprovalStatus</li>
-                    <li>Admin Comments: @property.ApprovalComment</li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <img class="img img-thumbnail" src="@property.GetInlineImageSrc()" />
-            </div>
-        //</div>
+<style>
+    .row {
+        overflow: hidden;
     }
+
+    .approval_image {
+        float: right;
+        margin-top: 10px;
+    }
+
+    .property_image {
+        float: left;
+        margin-top: 10px;
+    }
+
+    .property_info {
+        overflow: hidden;
+        padding-left: 25px;
+        margin-bottom: 10px;
+    }
+
+    .property_description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+    }
+</style>
+
+<script>
+    function addListing() {
+        window.open("/Property/AddProperty", "_self")
+    }
+</script>
+
+<div class="add_listing" style="text-align:center">
+    Need to make a new listing? &nbsp;&nbsp;
+    <button type="button" class="btn btn-primary" onclick="addListing()">Add Listing</button>
+</div>
+
+<hr />
+
+<div class="rent_list" style="padding-left:10%; padding-right:10%">
+    @if (properties.Length > 0)
+    {
+        @foreach (Property property in properties)
+        {
+            <div class="row">
+                <div class="property_image">
+                    @if (property.Image != null)
+                    {
+                        <img class="img img-thumbnail" alt="@property.Name" style="max-height:100px;background-color: #26734d;" src="@property.GetInlineImageSrc()" />
+                    }
+                    else
+                    {
+                        <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="~/images/home_icon.png" />
+                    }
+                </div>
+                <div class="approval_image">
+                    @if (property.ApprovalStatus == Property.ApprovalEnum.Approved)
+                    {
+                        <img src="~/images/status_happy.png" style="max-height:100px; overflow:hidden;" title="Approved!" alt="Approved!">
+                    }
+                    else if (property.ApprovalStatus == Property.ApprovalEnum.Rejected)
+                    {
+                        <img src="~/images/status_sad.png" style="max-height:100px; overflow:hidden;" title="Rejected!" alt="Rejected!">
+                    }
+                    else
+                    {
+                        <img src="~/images/status_neutral.png" style="max-height:100px; overflow:hidden;" title="Pending..." alt="Pending...">
+                    }
+
+                </div>
+                <div class="property_info">
+                    <h3><a asp-page="/Property/Property" asp-route-id="@property.Id">@property.Name</a></h3>
+                    <p class="property_description">@property.Description</p>
+                    <p> <b>£@property.RentPerMonth pcm</b></p>
+                </div>
+                @if (property.ApprovalStatus != Property.ApprovalEnum.Pending)
+                {
+                    <p><b>Comment:</b> @property.ApprovalComment</p>
+                }
+                <hr />
+            </div>
+         }
+    }
+    else
+    {
+        <p>Sorry, you don't have any properties listed at the moment!</p>
+    }
+
 </div>
