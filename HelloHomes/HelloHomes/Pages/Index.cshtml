@@ -56,7 +56,7 @@
     <!--Property of the day -->
     @{
         int day = (int)DateTime.Now.DayOfWeek;
-        int propertyOfTheDayNum = properties.Length % day;
+        int propertyOfTheDayNum = properties.Length - 1 % day;
 
         Models.Property propertyOfTheDay = properties[propertyOfTheDayNum];
     }
