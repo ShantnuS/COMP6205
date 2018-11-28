@@ -39,15 +39,10 @@
     }
 </style>
 
-<script>
-    function addListing() {
-        window.open("/Property/AddEditProperty", "_self")
-    }
-</script>
-
 <div class="add_listing" style="text-align:center">
     Need to make a new listing? &nbsp;&nbsp;
-    <button type="button" class="btn btn-primary" onclick="addListing()">Add Listing</button>
+    <a asp-page="/Property/AddEditProperty" asp-route-id="@properties.Length" class="btn btn-primary">Add Listing</a>
+    
 </div>
 
 <hr />
