@@ -13,7 +13,7 @@ namespace HelloHomes.Pages.Property
     public class AddEditPropertyModel : PageModel
     {
         [FromRoute]
-        public long? Id { get; set; }
+        public long Id { get; set; }
 
         public async Task<bool> IsNewProperty()
         {
@@ -58,6 +58,7 @@ namespace HelloHomes.Pages.Property
             //Place to put data into
             Models.Property property = new Models.Property
             {
+                Id = Id,
                 Name = Name,
                 Description = Description,
                 Bedrooms = Bedrooms,
@@ -88,7 +89,7 @@ namespace HelloHomes.Pages.Property
         {
             if (Id != null)
             {
-                propertyService.RemovePropertyAsync((long) Id);
+                propertyService.RemovePropertyAsync(Id);
             }
             return RedirectToPage("/Property/List");
         }
