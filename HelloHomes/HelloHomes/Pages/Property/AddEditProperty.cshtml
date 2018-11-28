@@ -39,7 +39,7 @@
             <div class="col-sm-10">
                 @if (!Model.IsNewProperty)
                 {
-                    <textarea asp-for="Description" class="form-control">@property.Description</textarea>
+                    <textarea name="Description" class="form-control">@property.Description</textarea>
                 }
                 else
                 {

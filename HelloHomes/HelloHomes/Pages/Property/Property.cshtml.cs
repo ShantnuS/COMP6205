@@ -17,10 +17,6 @@ namespace HelloHomes.Pages.Property
             var id = long.Parse((string)RouteData.Values["id"]);
 
             return RedirectToPage("/AddEditProperty/");
-            var propertyService = new PropertyService();
-            var property = await propertyService.FindAsync(id);
-
-            propertyService.RemovePropertyAsync(id);
         }
     }
 }

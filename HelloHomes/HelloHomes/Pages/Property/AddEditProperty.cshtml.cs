@@ -27,6 +27,7 @@ namespace HelloHomes.Pages.Property
 
         [BindProperty]
         [Required]
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Description")]
         public string Description { get; set; }
 
@@ -50,6 +51,8 @@ namespace HelloHomes.Pages.Property
             var propertyService = new PropertyService();
 
             var person = await personService.FindByEmailAsync(User.Identity.Name);
+
+            Description = this.Request.Form["Description"];
 
             //Place to put data into
             Models.Property property = new Models.Property
