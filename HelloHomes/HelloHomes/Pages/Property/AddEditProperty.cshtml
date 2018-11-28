@@ -1,7 +1,11 @@
-﻿@page
-@model HelloHomes.Pages.Property.AddEditPropertyModel
-@{
-    ViewData["Title"] = Model.IsNewProperty ? "AddProperty" : "EditProperty" ;
+﻿@page "{id}"
+@model AddEditPropertyModel
+@{ 
+    var id = long.Parse((string)RouteData.Values["id"]);
+    var propertyService = new PropertyService();
+    var property = await propertyService.FindAsync(id);
+
+    ViewData["Title"] = "AddEditProperty";
 }
 
 <div class="row" style="padding:10%;">
@@ -20,28 +24,55 @@
         <div class="form-group">
             <label asp-for="Name" class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
-                <input asp-for="Name" class="form-control" placeholder="Property Name" />
+                @if (!Model.IsNewProperty)
+                {
+                    <input asp-for="Name" class="form-control" value=@property.Name/>
+                } else
+                {
+                    <input asp-for="Name" class="form-control" placeholder="Property Name" />
+                }
             </div>
         </div>
 
         <div class="form-group">
             <label asp-for="Description" class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
-                <textarea asp-for="Description" class="form-control" placeholder="Description"></textarea>
+                @if (!Model.IsNewProperty)
+                {
+                    <textarea asp-for="Description" class="form-control">@property.Description</textarea>
+                }
+                else
+                {
+                    <textarea asp-for="Description" class="form-control" placeholder="Description"></textarea>
+                }
             </div>
         </div>
 
         <div class="form-group">
             <label asp-for="Bedrooms" class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
-                <input asp-for="Bedrooms" class="form-control" placeholder="No. of Bedrooms" />
+                @if (!Model.IsNewProperty)
+                {
+                    <input asp-for="Bedrooms" class="form-control" value="@property.Bedrooms"/>
+                }
+                else
+                {
+                    <input asp-for="Bedrooms" class="form-control" placeholder="No. of Bedrooms" />
+                }
             </div>
         </div>
 
         <div class="form-group">
             <label asp-for="RentPerMonth" class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
-                <input asp-for="RentPerMonth" class="form-control" placeholder="Rent (£ pcm)" />
+                @if (!Model.IsNewProperty)
+                {
+                    <input asp-for="RentPerMonth" class="form-control" value="@property.RentPerMonth" />
+                }
+                else
+                {
+                    <input asp-for="RentPerMonth" class="form-control" placeholder="Rent (£ pcm)" />
+                }
             </div>
         </div>
 
@@ -54,14 +85,19 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Add Property Listing</button>
-                @if (!Model.IsNewProperty)
-                {
-                    <button type="submit" asp-page-handler="Delete" class="btn btn btn-warning">Delete</button>
-                }
+                    @if (!Model.IsNewProperty)
+                    {
+                        <button type="submit" class="btn btn-primary">Update Property Listing</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary">Add Property Listing</button>
+                    }
+                    @if (!Model.IsNewProperty)
+                    {
+                        <button asp-page-handler="Delete" class="btn btn btn-warning">Delete</button>
+                    }
             </div>
         </div>
-
     </form>
-
 </div>

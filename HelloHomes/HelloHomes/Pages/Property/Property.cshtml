@@ -3,6 +3,9 @@
     var id = long.Parse((string)RouteData.Values["id"]);
     var propertyService = new PropertyService();
     var property = await propertyService.FindAsync(id);
+
+    var personService = new PersonService();
+    var person = await personService.FindByEmailAsync(User.Identity.Name);
     try
     {
         ViewData["Title"] = property.Name;
@@ -11,7 +14,6 @@
     {
         Response.Redirect("~/Error/404");
     }
-
 }
 
 <style>
@@ -40,7 +42,17 @@
         <p style="color:red; text-align:center;"> WARNING! This property has not been approved!</p>
     }
     <div class="main_info">
-        <p class="property_name">@property.Name</p>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="property_name">@property.Name</p>
+            </div>
+            <div class="col-md-4">
+                @if (property.LandlordID == person.Id)
+                {
+                    <a asp-page="/Property/AddEditProperty" asp-route-id="@property.Id" class="btn btn-warning">Edit Listing</a>
+                }
+            </div>
+        </div>
         <p class="property_price"> <b>£@property.RentPerMonth pcm</b></p>
     </div>
     <hr />

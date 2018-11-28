@@ -75,5 +75,10 @@ namespace HelloHomes.Models
             property.ApprovalComment = approvalComment;
             await _context.SaveChangesAsync();
         }
+
+        public void RemovePropertyAsync(long id)
+        {
+            _context.Remove(FindAsync(id));
+        }
     }
 }

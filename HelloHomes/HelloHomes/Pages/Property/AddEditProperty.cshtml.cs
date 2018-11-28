@@ -77,7 +77,7 @@ namespace HelloHomes.Pages.Property
             }
 
             await propertyService.SaveAsync(property);
-            return RedirectToPage("/List");
+            return RedirectToPage("/Property/List");
         }
     }   
 }
