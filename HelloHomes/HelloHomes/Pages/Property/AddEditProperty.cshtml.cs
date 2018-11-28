@@ -15,11 +15,11 @@ namespace HelloHomes.Pages.Property
         [FromRoute]
         public long? Id { get; set; }
 
-        public bool IsNewProperty
+        public async Task<bool> IsNewProperty()
         {
-            get { return Id == null; }
+            return Id >= (await propertyService.GetAllAsync()).Length;
         }
-
+        
         [BindProperty]
         [Required]
         [Display(Name = "Property Name")]
@@ -45,10 +45,11 @@ namespace HelloHomes.Pages.Property
         [Display(Name = "Image of Property")]
         public IFormFile Image { get; set; }
 
+        private PropertyService propertyService = new PropertyService();
+
         public async Task<IActionResult> OnPostAsync()
         {
             var personService = new PersonService();
-            var propertyService = new PropertyService();
 
             var person = await personService.FindByEmailAsync(User.Identity.Name);
 
@@ -80,6 +81,15 @@ namespace HelloHomes.Pages.Property
             }
 
             await propertyService.SaveAsync(property);
+            return RedirectToPage("/Property/List");
+        }
+
+        public async Task<IActionResult> OnDeleteAsync()
+        {
+            if (Id != null)
+            {
+                propertyService.RemovePropertyAsync((long) Id);
+            }
             return RedirectToPage("/Property/List");
         }
     }   
