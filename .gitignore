@@ -17,3 +17,6 @@ node_modules
 *.snk
 .nuget/NuGet.exe
 project.lock.json
+/report/*
+!/report/report.tex
+!/report/figures/
