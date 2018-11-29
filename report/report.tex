@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage{hyperref}
 
 \newcommand{\Csharp}{%
   {\settoheight{\dimen0}{C}C\kern-.05em \resizebox{!}{\dimen0}{\raisebox{\depth}{\#}}}}
@@ -11,12 +12,12 @@
 \maketitle
 
 \section{Overview}
-    \par
+    \paragraph{}
         The assignment involved creating a prototype for a real-estate website aimed at university students.
         The website needs to allow: landlords to list properties, administrators to approve properties, landlords to be able to track the status of their property, and students to view approved properties.
         We have achieved all of these requirements and have added a number of other useful features, including but not limited to landlords having the ability to edit any details of a property, requiring re-approval by the University officer.
 
-    \par
+    \paragraph{}
         Since the project required efficient use of ASP.NET Razor pages, a technology neither of us had used previously used, we decided to begin the project by pair programming, which allowed us to gain an understanding of how the logic of the application would work, and then develop individually later on, each of us working on a set of features.
         This meant that tasks could easily be split between us.
 
@@ -197,6 +198,34 @@
 \section{Testing}
 
 \section{Extensions}
+    \subsection{Deploying to Azure}
+        \par
+            With Visual Studio 2017, it is very easy to deploy a Razor pages website to Microsoft Azure.
+            This allows the app to be accessible from anywhere and since it is a Platform-as-a-Service (PaaS), there is no over/under-provisioning.
+            Another reason to use Azure was that students get £150 of free credit upon joining, which is ideal to test our prototype website.
+
+        \par
+            To deploy to Azure, we could simply right click on the project and click “publish”.
+            After this we could set-up the deployment name and the SQL database we’d like to use - generating their tables using the migration and deploy the application.
+
+        \par
+            Furthemore, we could also set-up a custom domain by adding a CNAME record on our domain’s DNS records.
+            Since we already had a namecheap domain from a previous project, we could add a record for \href{https://hellohomes.shantnu.me/}{hellohomes.shantnu.me} and verify this CNAME on the Azure portal.
+            After this the website was accessible from anywhere in the world.
+            However, one issue was that the website uses ‘https’ but we haven’t configured an SSL certificate.
+            This means a warning is displayed before connecting to the website.
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.7\textwidth]{figures/custom_domain.png}
+                \caption[Custom Domain]{The web app hosted on a custom domain}
+                \label{fig:custom_domain}
+            \end{figure}
+
+        \par
+            Apart from greater availability, another great advantage of Azure was the performance monitoring tools it provides.
+            There is also an option to create alerts if there are any issues with the website, such as high CPU usage or downtime.
+
 
 \section{Critical Evaluation}
 
