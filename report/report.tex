@@ -1,6 +1,9 @@
 \documentclass{article}
 \usepackage{graphicx}
 
+\newcommand{\Csharp}{%
+  {\settoheight{\dimen0}{C}C\kern-.05em \resizebox{!}{\dimen0}{\raisebox{\depth}{\#}}}}
+
 \begin{document}
 \title{COMP6205 Web Development\\}
 \author{Group 8\\Shantnu Singh - ss18g15\\Doug Morgan - dm3g14}
@@ -126,6 +129,70 @@
             This cookie can be used to see which user is logged in throughout the session and to determine if they are allowed to view certain pages.
 
     \subsection{Additional Features}
+        \par
+            On top of the core functionality, we implemented some additional features to the site.
+            These were done to demonstrate our understanding of Razor web development and to test its limitations.
+
+        \par
+            Firstly, we added the option to edit properties.
+            If the user views a property they themself listed, the are shown a button on top of the page which allows them to edit the property.
+            Doing this takes them to a page similar to the new property page, except the previous details are filled in.
+            They can simply change any information and re-list the site.
+            However, doing this means the approval status is reset.
+            This was done to prevent a malicious landlord changing details after being approved, but to also allow them to act on the comments left by the admin.
+
+        \par
+            Since Razor pages allows \Csharp\space code to be run to pre-process a HTML page, we could use this to test some interesting features.
+            On the homepage of the site, we display the “property of the day” and a “random property”.
+            This is done by creating an array of all approved properties and choosing relevant ones for each section.
+            For the property of the day, the result is based on the current day of the week and the number of approved properties, whereas the random property can be any approved property and changes upon refresh!
+
+        \par
+            We also experimented with routing and displaying data relevant to the user in the site.
+            For example, clicking the user’s name on the navigation bar, next to the logout button, takes the user to their profile page where their details are visible.
+            In the future, we could add the ability to edit profiles and maybe add a profile picture.
+
+        \par
+            A final example of additional features is embedding other services onto the website.
+            On the contact page, we embedded a Google Maps applet which displays the location of the HelloHomes headquarters.
+            Since HelloHomes is a fictional entity, we used the University’s address.
+
+    \subsection{Security}
+        \par
+            Since we had done a number of cyber-security modules at the university, we thought it was important to consider the security aspects of the site.
+            This also gave us the opportunity to evaluate the features provided by ASP.NET and Razor.
+
+        \subsubsection{Password Hashing}
+            \par
+                Since the password had to be stored in an SQL database, we thought it was unwise to store them in plain text.
+                This is especially important as, for example, Visual Studio has an option to view data stored in the database.
+                Therefore, we implemented password hashing to the website.
+                This is done by creating a SHA1 hash of the password before storing them to the database and then simply comparing the hash to a hashed version of the password entered by the user.
+                The reason to use SHA1 was due to its superiority to MD5 and simplicity to some other algorithms.
+                However, in the future we would like to implement PBKDF2 or bscript as they are the systems recommended in the field.
+
+        \subsubsection{Secure File Upload}
+            \par
+                The only area of the site where the user could upload a file was when submitting an image along with the property.
+                To combat this, we ensured the file input box only accepted image files with the MIME type for PNG or JPEG.
+                This ensures that safe files are uploaded.
+                To further improve this, the file size could be capped or the extension checked.
+
+        \subsubsection{Built-in Security}
+            \par
+                There were a number of security features that were built into the libraries we used from ASP.NET.
+                Firstly, since the user was authenticated via cookies, it was important that a malicious individual could not alter the value of the cookie to gain access to another user’s account.
+                Fortunately, cookies are automatically hashed by ASP.NET’s authentication library and thus such an attack cannot be carried out.
+
+            \par
+                Secondly, Cross Site Request Forgery (CSRF) can be used to make malicious requests to the server from a user’s behalf.
+                Razor pages come with built in verification to prevent this.
+
+            \par
+                Finally, when inputs are passed between the SQL database and the application, it is important to ensure they are sanitised to prevent SQL injection.
+                Luckily, using the database context super-class when creating the database ensures this is done.
+                This also protects the site against Cross-Site Scripting (XSS).
+
 
 \section{Testing}
 
