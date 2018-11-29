@@ -6,6 +6,7 @@
 
     var propertyService = new PropertyService();
     var properties = await propertyService.GetAllForLandlordAsync(person.Id);
+    var allProperties = await propertyService.GetAllForLandlordAsync(person.Id);
 
     ViewData["Title"] = "List";
 }
@@ -41,8 +42,7 @@
 
 <div class="add_listing" style="text-align:center">
     Need to make a new listing? &nbsp;&nbsp;
-    <a asp-page="/Property/AddEditProperty" asp-route-id="@(properties.Length +1)" class="btn btn-primary">Add Listing</a>
-    
+    <a asp-page="/Property/AddProperty" class="btn btn-primary">Add Listing</a>
 </div>
 
 <hr />

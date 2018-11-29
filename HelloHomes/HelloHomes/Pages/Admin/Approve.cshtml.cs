@@ -19,7 +19,7 @@ namespace HelloHomes.Pages.Admin
         {
             var id = long.Parse((string)RouteData.Values["id"]);
 
-            if (Description.Equals(""))
+            if (Description == null)
             {
                 ModelState.AddModelError("", "Please leave a comment!");
             }
