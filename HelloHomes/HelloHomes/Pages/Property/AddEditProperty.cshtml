@@ -25,11 +25,11 @@
             <div class="col-sm-10">
                 @if (!(await Model.IsNewProperty()))
                 {
-                    <input asp-for="Name" class="form-control" value=@property.Name />
+                    <input asp-for="Name" class="form-control" value=@property.Name required/>
                 }
                 else
                 {
-                    <input asp-for="Name" class="form-control" placeholder="Property Name" />
+                    <input asp-for="Name" class="form-control" placeholder="Property Name" required/>
                 }
             </div>
         </div>
@@ -39,11 +39,11 @@
             <div class="col-sm-10">
                 @if (!(await Model.IsNewProperty()))
                 {
-                    <textarea name="Description" class="form-control">@property.Description</textarea>
+                    <textarea name="Description" class="form-control" required>@property.Description</textarea>
                 }
                 else
                 {
-                    <textarea asp-for="Description" class="form-control" placeholder="Description"></textarea>
+                    <textarea asp-for="Description" class="form-control" placeholder="Description" required></textarea>
                 }
             </div>
         </div>
@@ -53,11 +53,11 @@
             <div class="col-sm-10">
                 @if (!(await Model.IsNewProperty()))
                 {
-                    <input asp-for="Bedrooms" class="form-control" value="@property.Bedrooms" />
+                    <input asp-for="Bedrooms" class="form-control" value="@property.Bedrooms" required/>
                 }
                 else
                 {
-                    <input asp-for="Bedrooms" class="form-control" placeholder="No. of Bedrooms" />
+                    <input asp-for="Bedrooms" class="form-control" placeholder="No. of Bedrooms" required/>
                 }
             </div>
         </div>
@@ -67,11 +67,11 @@
             <div class="col-sm-10">
                 @if (!(await Model.IsNewProperty()))
                 {
-                    <input asp-for="RentPerMonth" class="form-control" value="@property.RentPerMonth" />
+                    <input asp-for="RentPerMonth" class="form-control" value="@property.RentPerMonth" required/>
                 }
                 else
                 {
-                    <input asp-for="RentPerMonth" class="form-control" placeholder="Rent (£ pcm)" />
+                    <input asp-for="RentPerMonth" class="form-control" placeholder="Rent (£ pcm)" required/>
                 }
             </div>
         </div>

@@ -41,7 +41,7 @@
 
 <div class="add_listing" style="text-align:center">
     Need to make a new listing? &nbsp;&nbsp;
-    <a asp-page="/Property/AddEditProperty" asp-route-id="@properties.Length" class="btn btn-primary">Add Listing</a>
+    <a asp-page="/Property/AddEditProperty" asp-route-id="@(properties.Length + 1)" class="btn btn-primary">Add Listing</a>
     
 </div>
 
