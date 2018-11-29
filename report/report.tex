@@ -64,6 +64,66 @@
 
 \section{Features}
     \subsection{Main Features}
+        \par
+            The main features of the website consisted of:
+            \begin{itemize}
+                \item Ability for all users to view approved properties
+                \item Ability for landlords to add new properties
+                \item Ability for admins to approve and reject properties
+            \end{itemize}
+
+        \par
+            In addition to this, there had to be some form of authentication and a separate section for the admin user.
+
+        \par
+            Figure \ref{fig:rent_page} shows the page where approved properties are listed.
+            Here only the title, image, description and cost of the property is shown, but upon clicking the title of the property, the user is taken to a page where full details, including contact details are shown.
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.7\textwidth]{figures/rent.png}
+                \caption[Rent Page]{The rent page, where approved properties appear}
+                \label{fig:rent_page}
+            \end{figure}
+
+        \par
+            The user, after authenticating, can access a page where they can see the properties they have listed and their current approval status.
+            They are also shown a comment if the property was approved or rejected.
+            On top of this page, there is a button to add a new property.
+            Figure \ref{fig:add_property} shows the add property page.
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.7\textwidth]{figures/add_property.png}
+                \caption[Add Property]{Adding a property to the listings}
+                \label{fig:add_property}
+            \end{figure}
+
+        \par
+            When a new property is listed (or a current property edited), it must be approved before it is displayed; this can be done in the admin section of the site.
+            Each pending property is listed here, along with a button to approve or reject them, as shown in Figure \ref{fig:admin_page}.
+            Clicking on either of these options shows the admin details about the property, along with a text box to leave a comment regarding their decision, demonstrated in Figure \ref{fig:admin_approval}.
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.7\textwidth]{figures/admin_page.png}
+                \caption[Approve Property]{Admin viewing property listing for approval}
+                \label{fig:admin_page}
+            \end{figure}
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=0.7\textwidth]{figures/admin_approval.png}
+                \caption[Comment on Property]{Admin approval or rejection comment}
+                \label{fig:admin_approval}
+            \end{figure}
+
+        \par
+            Only the landlord and admin have to be authenticated.
+            This is done by adding authorisation to certain pages of the site, so that the user has to login before accessing them.
+            There is provisioning for this in ASP.NET.
+            When the user logs in, they are authenticated via details stored in the database and a cookie session is created.
+            This cookie can be used to see which user is logged in throughout the session and to determine if they are allowed to view certain pages.
 
     \subsection{Additional Features}
 
