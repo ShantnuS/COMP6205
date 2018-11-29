@@ -19,7 +19,7 @@ namespace HelloHomes.Pages.Property
 
         public async Task<bool> IsNewProperty()
         {
-            return Id >= (await propertyService.GetAllAsync()).Length;
+            return Id > (await propertyService.GetAllAsync()).Length;
         }
         
         [BindProperty]
