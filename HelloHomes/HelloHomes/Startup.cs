@@ -54,7 +54,6 @@ namespace HelloHomes
 
             services.AddDbContext<HelloHomesPropertyContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("HelloHomesPropertyContext")));
-        
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

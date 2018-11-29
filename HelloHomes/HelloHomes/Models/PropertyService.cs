@@ -76,9 +76,19 @@ namespace HelloHomes.Models
             await _context.SaveChangesAsync();
         }
 
-        public void RemovePropertyAsync(long id)
+        public async void RemovePropertyAsync(long id)
         {
-            _context.Remove(FindAsync(id));
+            Property property = await FindAsync(id);
+            _context.Remove(property);
+            await _context.SaveChangesAsync();
+
+            Property[] properties = await GetAllAsync();
+
+            for (long i = id + 1; i < properties.Length; i++)
+            {
+                properties[i].Id = i - 1;
+                await SaveAsync(properties[i]);
+            }
         }
     }
 }
