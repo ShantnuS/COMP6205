@@ -45,6 +45,26 @@ namespace HelloHomes.Pages.Account
                 ModelState.AddModelError("", "Email already in use!");
             }
 
+            if (EmailAddress == null || !PersonService.IsValidEmail((string)EmailAddress))
+            {
+                ModelState.AddModelError("", "Please enter a valid email!");
+            }
+
+            if (Password == null)
+            {
+                ModelState.AddModelError("", "Please enter a password!");
+            }
+
+            if (FullName == null)
+            {
+                ModelState.AddModelError("", "Please enter your full name!");
+            }
+
+            if (PhoneNumber == null || !PersonService.IsPhoneNumber((string)PhoneNumber))
+            {
+                ModelState.AddModelError("", "Please enter a valid phone number!");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
