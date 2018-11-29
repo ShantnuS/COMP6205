@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web;
 using System.Threading.Tasks;
 using HelloHomes.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.IO;
 
 namespace HelloHomes.Pages.Property
 {
@@ -72,7 +74,7 @@ namespace HelloHomes.Pages.Property
 
             if (Image != null)
             {
-                using (var stream = new System.IO.MemoryStream())
+                using (var stream = new MemoryStream())
                 {
                     await Image.CopyToAsync(stream);
 
@@ -85,12 +87,14 @@ namespace HelloHomes.Pages.Property
             return RedirectToPage("/Property/List");
         }
 
+        public void Put(IFormFile formFile)
+        {
+            Image = formFile;
+        }
+
         public async Task<IActionResult> OnDeleteAsync()
         {
-            if (Id != null)
-            {
-                propertyService.RemovePropertyAsync(Id);
-            }
+            propertyService.RemovePropertyAsync(Id);
             return RedirectToPage("/Property/List");
         }
     }   
