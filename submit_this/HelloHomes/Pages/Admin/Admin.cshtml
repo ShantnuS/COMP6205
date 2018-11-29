@@ -1,0 +1,79 @@
+﻿@page
+@{
+    var personService = new PersonService();
+    var person = await personService.FindByEmailAsync(User.Identity.Name);
+
+    var propertyService = new PropertyService();
+    var properties = await propertyService.GetAllUnapprovedAsync();
+}
+
+<style>
+    .row {
+        overflow: hidden;
+    }
+
+    .approval_image {
+        float: right;
+        margin-top: 10px;
+    }
+
+    .property_image {
+        float: left;
+        margin-top: 10px;
+    }
+
+    .property_info {
+        overflow: hidden;
+        padding-left: 25px;
+        margin-bottom: 10px;
+    }
+
+    .property_description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+    }
+</style>
+
+@if (person.IsAdmin)
+{
+    <h2>Property Manager</h2>
+    <hr /> 
+
+    <div class="rent_list" style="padding-left:10%; padding-right:10%">
+        @foreach (Property property in properties)
+        {
+            <div class="row">
+                <div class="property_image">
+                    @if (property.Image != null)
+                    {
+                        <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="@property.GetInlineImageSrc()" />
+                    }
+                    else
+                    {
+                        <img class="img img-thumbnail" style="max-height:100px;background-color: #26734d;" src="~/images/home_icon.png" />
+                    }
+                </div>
+                <div class="property_info">
+                    <h3><a asp-page="/Property/Property" asp-route-id="@property.Id">@property.Name</a></h3>
+                    <p class="property_description">@property.Description</p>
+                    <a asp-page="/Admin/Approve" asp-route-id="@property.Id">Approve</a> /
+                    <a asp-page="/Admin/Reject" asp-route-id="@property.Id">Reject</a>
+                </div>
+            </div>
+            <hr />
+        }
+        @if (properties.Length == 0)
+        {
+            <p> There are no properties pending approval!</p>
+        }
+    </div>
+
+}
+else
+{
+    <h3>Sorry you are not allowed to see this! </h3>
+    <h4>You have to be an admin! </h4>
+}
+

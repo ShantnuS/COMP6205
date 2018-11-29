@@ -1,0 +1,78 @@
+﻿.container {
+    position: relative;
+    width: 100%;
+}
+
+    .container .container_image {
+        overflow: hidden;
+    }
+
+    .container .container_image img {
+        width: 100%;
+        height: 60%;
+        filter: blur(5px);
+        transform: scale(1.2);
+    }
+
+    .container .btn {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: #26734d;
+        color: white;
+        font-size: 150%;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .container .btn.btn_rent {
+        top: 50%;
+        left: 40%;
+    }
+
+    .container .btn.btn_list {
+        top: 50%;
+        left: 60%;
+    }
+
+    .container .btn:hover {
+        background-color: black;
+    }
+
+    .container .bannertext {
+        font-family: georgia;
+        font-size: 350%;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .container .bannertext.bannertext_top {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+}
+
+    .container .bannertext_middle {
+        font-family: georgia;
+        color: white;
+        font-size: 250%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+    .container .bannertext.bannertext_bottom {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
