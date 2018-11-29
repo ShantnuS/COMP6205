@@ -1,0 +1,84 @@
+﻿<DOCTYPE html>
+
+<html>
+<head>
+
+    @if (ViewData["Title"] != null)
+    {
+        <title class="title">Hello Homes - @ViewData["Title"]</title>
+    }
+    else
+    {
+        <title class="title">Hello Homes</title>
+    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="~/favicon.ico" />
+</head>
+<body>
+    <!-- Title -->
+    <div class="title">
+        <a href="/index">
+            <img class="title_logo" src="~/images/HelloHomesLogo.png" alt="Hello Homes!" />
+        </a>
+    </div>
+
+    <!-- Navigation Bar-->
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="/Index">Home</a></li>
+                <li><a href="/Property/Rent">Rent</a></li>
+                <li><a href="/Property/List">List</a></li>
+                <li><a href="/Contact">Contact</a></li>
+            </ul>
+
+            <!-- Login/Logout section -->
+            <ul class="nav navbar-nav nav-right">
+                <li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a href="/Account/Login">Login</a>
+                    }
+                    else
+                    {
+                        var personService = new PersonService();
+                        var person = await personService.FindByEmailAsync(User.Identity.Name);
+
+                        <form style="padding-top:7px; padding-bottom:0px;" method="post" asp-page="/Account/Login" asp-page-handler="Logout">
+                            <a href="/Account/Profile" style="color:turquoise;padding-right:10px;">Hello @person.FullName!</a>
+                            <button type="submit" class="btn btn-primary">Logout</button>
+                        </form>
+                    }
+                    </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Body -->
+    <div class="content">
+        <div class="inner-content">
+            @RenderBody()
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer_nav">
+            <ul>
+                <li><a href="/About">About</a></li>
+                <li><a href="/Admin/Admin">Admin</a></li>
+                <li><a href="/Help">Help</a></li>
+            </ul>
+        </div>
+        <div class="footer_time">
+            <span class="text-muted">Last Rendered: @DateTime.Now </span>
+        </div>
+    </div>
+</body>
+</html>
