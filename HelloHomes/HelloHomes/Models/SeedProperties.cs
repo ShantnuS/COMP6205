@@ -32,7 +32,6 @@ namespace HelloHomes.Models
                         LandlordNumber = "0999",
                         ApprovalStatus = Property.ApprovalEnum.Approved,
                         ApprovalComment = "Looks good!",
-                        Id = 0
                     },
 
                     new Property
