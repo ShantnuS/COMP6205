@@ -36,7 +36,7 @@ namespace HelloHomes.Pages.Account
         {
             var personService = new PersonService();
 
-            var pExist = await personService.FindByEmailAsync(EmailAddress, Password);
+            var pExist = await personService.FindByEmailAsync(EmailAddress);
 
             var isValidUser = pExist != null;
 
@@ -54,13 +54,13 @@ namespace HelloHomes.Pages.Account
             Person person = new Person
             {
                 EmailAddress = EmailAddress,
-                Password = Password,
+                Password = PersonService.Hash(Password),
                 FullName = FullName,
                 PhoneNumber = PhoneNumber
             };
 
             await personService.SaveAsync(person);
-            return RedirectToPage("/Login");
+            return RedirectToPage("/Account/Login");
         }
     }
 }

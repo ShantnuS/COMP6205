@@ -26,7 +26,7 @@ namespace HelloHomes.Models
                     {
                         IsAdmin = true,
                         EmailAddress = "admin@hellohomes.net",
-                        Password = "admin",
+                        Password = PersonService.Hash("admin"),
                         FullName = "Admin Bob",
                         PhoneNumber = "0999"
                     },
@@ -35,7 +35,7 @@ namespace HelloHomes.Models
                     {
                         IsAdmin = false,
                         EmailAddress = "jim@hellohomes.net",
-                        Password = "admin",
+                        Password = PersonService.Hash("admin"),
                         FullName = "Jim Bob",
                         PhoneNumber = "121313"
                     }

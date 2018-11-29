@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HelloHomes.Models
@@ -48,6 +50,12 @@ namespace HelloHomes.Models
             _context.Entry(person).State = isNew ? EntityState.Added : EntityState.Modified;
 
             await _context.SaveChangesAsync();
+        }
+
+        public static string Hash(string input)
+        {
+            var hash = (new SHA1Managed()).ComputeHash(Encoding.UTF8.GetBytes(input));
+            return string.Join("", hash.Select(b => b.ToString("x2")).ToArray());
         }
     }
 }

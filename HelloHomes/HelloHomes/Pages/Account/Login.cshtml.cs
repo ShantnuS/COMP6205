@@ -27,7 +27,7 @@ namespace HelloHomes.Pages.Account
         public async Task<IActionResult> OnPostAsync()
         {
             var personService = new PersonService();
-            var person =  await personService.FindByEmailAsync(EmailAddress, Password);
+            var person =  await personService.FindByEmailAsync(EmailAddress, PersonService.Hash(Password));
 
             var isValidUser = person != null;
             string PersonFullName = "Null";
