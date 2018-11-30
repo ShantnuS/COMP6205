@@ -15,29 +15,27 @@
 
 \section{Overview}
     \paragraph{}
-        The assignment involved creating a prototype for a real-estate website aimed at university students.
-        The website needs to allow: landlords to list properties, administrators to approve properties, landlords to be able to track the status of their property, and students to view approved properties.
-        We have achieved all of these requirements and have added a number of other useful features, including but not limited to landlords having the ability to edit any details of a property, requiring re-approval by the University officer.
+        The assignment involved creating a prototype for a real-estate lettings site aimed at university students.
+        The website had to allow: landlords to list properties, administrators to approve or reject properties, landlords to be able to track the status of their property, and students to view approved properties.
+        We have achieved all of these requirements and have added a number of other useful features, including, but not limited to, landlords having the ability to edit any details of a property, requiring re-approval by the University officer.
+        Our website is called HelloHomes.
 
     \paragraph{}
-        We decided to call our website HelloHomes.
-
-    \paragraph{}
-        Since the project required efficient use of ASP.NET Razor pages, a technology neither of us had previously used, we decided to begin the project by pair programming, which allowed us to gain an understanding of how the logic of the application would work, and then develop individually later on, each of us working on a set of features.
+        Since the project required the use of ASP.NET Razor pages, a technology neither of us had previously used, we decided to begin the project by pair programming, which allowed us to gain an understanding of how the logic of the application would work, and then develop individually later on, each of us working on a set of features.
         This meant that tasks could easily be split between us.
 
     \paragraph{}
         To make programming separately easier, we used Git for version control.
-        Visual Studio 2017 was the ideal IDE as it had in-build Razor development support, such as; IntelliSense, for code completion; package management, through NuGet and deployment to Azure.
+        Visual Studio 2017 was the ideal IDE as it provides in-built Razor development support, such as IntelliSense for code completion, package management through NuGet, and deployment automation for Azure.
         An SQL Express database was used and initialised through migrations created using the IDE.
 
 \FloatBarrier
 \section{Design}
     \paragraph{}
         Before we could start programming, some thought had to be given to the design of the user interface and database.
-        We did this on pen and paper and using tools such as LucidChart.
+        We did this primarily on pen and paper, but also utilised digital tools such as LucidChart.
         The logo for the website was also created at this time and other images we used were sourced from the copyright-free section of Google Images.
-        The initial design of the website and the final database design is shown in Figures \ref{fig:early_sketches} and \ref{fig:sql_tables}.
+        The initial design of the website and the final database design are shown in Figures \ref{fig:early_sketches} and \ref{fig:sql_tables}.
 
         \begin{figure}[ht]
             \centering
@@ -62,7 +60,7 @@
         Users who are not signed in have no capability to list properties or to view properties that have not been approved.
 
     \paragraph{}
-        The visual design has been achieved using Bootstrap, an HTML and CSS library which provides dynamically resizable elements.
+        The visual design has been achieved using Bootstrap, an HTML, JavaScript and CSS library which provides dynamically resizable elements.
         We chose this tool for greater visual consistency over manually defined parameters, as it allows portable layouts to be defined easily, so that the site can be effectively viewed on all devices.
 
         \begin{figure}[!htb]
@@ -73,7 +71,9 @@
         \end{figure}
 
     \paragraph{}
-        Throughout the project we used a highly graphical approach to the design. This was done to enhance visual feedback to the user by limiting the amount of reading that needs to be done. An example of this is the property listing page where the approval status of the property is displayed using “emojis” instead of text. This is evidenced below (Figure \ref{fig:emoji_status}).
+        Throughout the project we used a highly graphical approach to the design. This was done to enhance visual feedback to the user by limiting the amount of reading that needs to be done.
+        An example of this is the property listing page where the approval status of the property is displayed using “emojis” instead of text.
+        This is evidenced in Figure \ref{fig:emoji_status}.
 
         \begin{figure}[!htb]
             \centering
@@ -109,7 +109,7 @@
 
         \paragraph{}
             The user, after authenticating, can access a page where they can see the properties they have listed and their current approval status.
-            They are also shown a comment if the property was approved or rejected.
+            They are also shown a comment once the property has been reviewed by an admin.
             On top of this page, there is a button to add a new property.
             Figure \ref{fig:add_property} shows the add property page.
 
@@ -153,11 +153,11 @@
 
         \paragraph{}
             Firstly, we added the option to edit properties.
-            If the user views a property they themselves listed, the are shown a button on top of the page which allows them to edit the property.
+            If the user views a property they listed themselves, they are shown a button at the top of the page which allows them to edit the property.
             Doing this takes them to a page similar to the new property page, except the previous details are filled in.
             They can simply change any information and re-list the site.
             However, doing this means the approval status is reset.
-            This was done to prevent a malicious landlord changing details after being approved, but to also allow them to act on the comments left by the admin.
+            This was done to prevent a malicious landlord changing details after being approved, but to also allow them to act on the comments left by the admin if rejected.
 
             \begin{figure}[!htb]
                 \centering
@@ -166,7 +166,7 @@
             \end{figure}
 
         \paragraph{}
-            Since Razor pages allows \Csharp\space code to be run to pre-process a HTML page, we could use this to test some interesting features.
+            Since Razor pages allows \Csharp\space code to be run to pre-process an HTML page, we could use this to test some interesting features.
             On the homepage of the site, we display the “property of the day” and a “random property”.
             This is done by creating an array of all approved properties and choosing relevant ones for each section.
             For the property of the day, the result is based on the current day of the week and the number of approved properties, whereas the random property can be any approved property and changes upon refresh!
@@ -183,7 +183,7 @@
             In the future, we could add the ability to edit profiles and maybe add a profile picture.
 
         \paragraph{}
-            A final example of additional features is embedding other services onto the website.
+            Our final additional feature is embedding other services onto the website.
             On the contact page, we embedded a Google Maps applet which displays the location of the HelloHomes headquarters.
             Since HelloHomes is a fictional entity, we used the University's address.
 
@@ -204,13 +204,13 @@
                 This is especially important as, for example, Visual Studio has an option to view data stored in the database.
                 Therefore, we implemented password hashing to the website.
                 This is done by creating a SHA-1 hash of the password before storing them to the database and then simply comparing the hash to a hashed version of the password entered by the user.
-                The reason to use SHA-1 was due to its superiority to MD5 and simplicity to some other algorithms.
-                However, in the future we would like to implement PBKDF2 or bscript as they are the systems recommended in the field.
+                The reason to use SHA-1 was due to its superiority to MD5 and simplicity compared to some other algorithms.
+                However, in the future we would like to implement PBKDF2 or bscript as they are the systems recommended in the industry.
 
         \subsubsection{Secure File Upload}
             \paragraph{}
                 The only area of the site where the user could upload a file was when submitting an image along with the property.
-                To combat this, we ensured the file input box only accepted image files with the MIME type for PNG or JPEG.
+                To combat malicious uploads, we ensured the file input box only accepted image files with the MIME type for PNG or JPEG.
                 This ensures that safe files are uploaded.
                 To further improve this, the file size could be capped or the extension checked.
 
@@ -222,11 +222,11 @@
 
             \paragraph{}
                 Secondly, Cross Site Request Forgery (CSRF) can be used to make malicious requests to the server from a user’s behalf.
-                Razor pages come with built in verification to prevent this \cite{request_verification}.
+                Razor pages come with built-in verification to prevent this \cite{request_verification}.
 
             \paragraph{}
                 Finally, when inputs are passed between the SQL database and the application, it is important to ensure they are sanitised to prevent SQL injection.
-                Luckily, using the database context super-class when creating the database ensures this is done.
+                Use of the database context super-class when creating the database ensures this is done automatically.
                 This also protects the site against Cross-Site Scripting (XSS).
 
 \FloatBarrier
@@ -238,7 +238,7 @@
             This allowed us to test the functionality of most parts of the site before user login and property listing aspects were in place, which in turn allowed us to reduce the scope of our search for issues that arose while these elements were being programmed.
 
         \paragraph{}
-            For other core functionalities, white-box testing was used extensively throughout development, both to ensure that each feature of the site had been robustly implemented and as part of our regression testing.
+            For other core functionalities, black-box testing was used extensively throughout development, both to ensure that each feature of the site had been robustly implemented and as part of our regression testing.
             This was extremely useful as it revealed several instances of changes made to files for a new feature affecting the performance of previously implemented elements.
 
         \paragraph{}
@@ -291,7 +291,8 @@
 
     \subsection{Logic Testing}
         \paragraph{}
-            User inputs on the site have to be tested to ensure they are correct. This includes making sure they are in the correct format, that they do not break application logic and are not missing when they shouldn't be. When there is an error on input, we have used Razor page’s ModelState functionality to display the relevant error to the user. We have shown one example of this.
+            User inputs on the site have all been tested to ensure they are correct. This includes making sure they are in the correct format, that they do not break application logic and are not missing when they shouldn't be.
+            When there is an error on input, we have used Razor page’s ModelState functionality to display the relevant error to the user. We have shown one example of this (Figure \ref{fig:logic_error}).
 
         \paragraph{}
             Safeguards we have added to user input include:
@@ -312,6 +313,7 @@
                 \centering
                 \includegraphics[width=0.8\textwidth]{figures/logic_error.png}
                 \caption[Logic Error]{Example of how user input errors are displayed}
+                \label{fig:logic_error}
             \end{figure}
 
 \FloatBarrier
@@ -320,18 +322,18 @@
         \paragraph{}
             With Visual Studio 2017, it is very easy to deploy a Razor pages website to Microsoft Azure \cite{azure_tutorial}.
             This allows the app to be accessible from anywhere and since it is a Platform-as-a-Service (PaaS), there is no over/under-provisioning.
-            Another reason to use Azure was that students get £150 of free credit upon joining, which is ideal to test our prototype website.
+            Another reason to use Azure was that students get $\pounds$150 of free credit upon joining, which is ideal to test our prototype website.
 
         \paragraph{}
-            To deploy to Azure, we could simply right click on the project and click “publish”.
-            After this we could set-up the deployment name and the SQL database we’d like to use - generating their tables using the migration and deploy the application.
+            To deploy to Azure, we could simply right click on the project and click ``publish''.
+            After this we could set-up the deployment name and the SQL database we'd like to use - generating their tables using the migration and deploy the application.
 
         \paragraph{}
             Furthermore, we could also set-up a custom domain by adding a CNAME record on our domain’s DNS records.
-            Since we already had a namecheap domain from a previous project, we could add a record for \href{https://hellohomes.shantnu.me/}{hellohomes.shantnu.me} and verify this CNAME on the Azure portal.
+            Since we already had a NameCheap domain from a previous project, we could add a record for \href{https://hellohomes.shantnu.me/}{``hellohomes.shantnu.me''} and verify this CNAME on the Azure portal.
             After this the website was accessible from anywhere in the world.
-            However, one issue was that the website uses ‘https’ but we haven’t configured an SSL certificate.
-            This means a warning is displayed before connecting to the website.
+            However, one issue was that the website uses `https' but we haven't configured an SSL certificate.
+            This means a warning is displayed before connecting to the website on a new device.
 
             \begin{figure}[!htb]
                 \centering
@@ -358,29 +360,29 @@
         More advanced features such as IntelliSense were indispensable, providing invaluable information on both formal mistakes, such as missing \texttt{using} directives, and coding style related issues.
 
     \paragraph{}
-        As a framework, ASP .NET has several benefits over it's competitors - \texttt{node.js} being the one we had experience in.
+        As a framework, ASP.NET has several benefits over it's competitors - \texttt{node.js} being the one we had experience in.
         It boasts tighter integration with the layout markup due to the use of \texttt{.cshtml} markup rather than \texttt{.html}, which is a significant quality of life improvement for elements like forms, where the passing of form field data to the controller is handled automatically.
-        The custom markup format also allows page design more simple through the use of embedded code, allowing convenient notations such as the automatic display of variables: a feature which is used extensively in the \texttt{List.cshtml} and \texttt{Rent.cshtml} pages.
-        It's integration with Visual Studio IDE is also a boon that other frameworks lack, at least to the extent that ASP .NET has, with tools such as the SQL database viewer allowing for extremely easy and effective debugging.
+        The custom markup format also makes page design more simple through the use of embedded code, allowing convenient notations such as the automatic display of variables: a feature which is used extensively in the \texttt{List.cshtml} and \texttt{Rent.cshtml} pages.
+        It's integration with Visual Studio IDE is also a boon that other frameworks lack, at least to the extent that ASP.NET has, with tools such as the SQL database viewer allowing for extremely easy and effective debugging.
 
     \paragraph{}
-        The major drawback of the framework was the learning curve: a new markup format and an unfamiliar language, paired with it's documentation being primarily written by Microsoft, made for an unforgiving experience towards the beginning of the coursework.
+        The major drawback of the framework was the learning curve: a new markup format and an unfamiliar language, paired with it's documentation being primarily written by Microsoft (with conflicting information for different versions of .NET) made for an unforgiving experience towards the beginning of the coursework.
         However, this disadvantage was a moot point after the first few weeks, and the overall ease of use and fully featured development environment more than made up for the initial difficulty.
 
 \newpage
 \begin{thebibliography}{1}
     \bibitem{request_verification}
-        "Request Verification in Razor Pages | Learn Razor Pages", Learnrazorpages.com, 2018. [Online]. Available: https://www.learnrazorpages.com/security/request-verification. [Accessed: 29- Nov- 2018]
+        ``Request Verification in Razor Pages | Learn Razor Pages'', Learnrazorpages.com, 2018. [Online]. Available: https://www.learnrazorpages.com/security/request-verification. [Accessed: 29- Nov- 2018]
     \bibitem{azure_tutorial}
-        "Publish an ASP.NET Core app to Azure with Visual Studio", Docs.microsoft.com, 2018. [Online]. Available: https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-2.1. [Accessed: 29- Nov- 2018]
+        ``Publish an ASP.NET Core app to Azure with Visual Studio'', Docs.microsoft.com, 2018. [Online]. Available: https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-2.1. [Accessed: 29- Nov- 2018]
     \bibitem{youtube_tutorial}
-        "Building Basic Web App from Scratch with ASP.NET Core 1.0", YouTube, 2018. [Online]. Available: https://www.youtube.com/watch?v=4xhardjp6q0. [Accessed: 29- Nov- 2018]
+        ``Building Basic Web App from Scratch with ASP.NET Core 1.0'', YouTube, 2018. [Online]. Available: https://www.youtube.com/watch?v=4xhardjp6q0. [Accessed: 29- Nov- 2018]
     \bibitem{lynda_tutorial}
-        J. Chadwick, "Creating Razor Pages", Lynda.com, 2018. [Online]. Available https://www.lynda.com/ASP-NET-tutorials/Creating-Razor-Pages/630622/679588-4.html. [Accessed: 29- Nov- 2018]
+        J. Chadwick, ``Creating Razor Pages'', Lynda.com, 2018. [Online]. Available https://www.lynda.com/ASP-NET-tutorials/Creating-Razor-Pages/630622/679588-4.html. [Accessed: 29- Nov- 2018]
     \bibitem{ms_razor_docs}
-        "Introduction to Razor Pages in ASP.NET Core", Docs.microsoft.com, 2018. [Online]. Available: https://docs.microsoft.com/en-gb/aspnet/core/razor-pages/. [Accessed: 29- Nov- 2018]
+        ``Introduction to Razor Pages in ASP.NET Core'', Docs.microsoft.com, 2018. [Online]. Available: https://docs.microsoft.com/en-gb/aspnet/core/razor-pages/. [Accessed: 29- Nov- 2018]
     \bibitem{dbcontext_tutorial}
-        "Modifying data via the DbContext | Learn Entity Framework Core", Learnentityframeworkcore.com, 2018. [Online]. Available: https://www.learnentityframeworkcore.com/dbcontext/modifying-data. [Accessed: 29- Nov- 2018]
+        ``Modifying data via the DbContext | Learn Entity Framework Core'', Learnentityframeworkcore.com, 2018. [Online]. Available: https://www.learnentityframeworkcore.com/dbcontext/modifying-data. [Accessed: 29- Nov- 2018]
 \end{thebibliography}
 
 \end{document}
