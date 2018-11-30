@@ -19,4 +19,5 @@ node_modules
 project.lock.json
 /report/*
 !/report/report.tex
+!/report/report.pdf
 !/report/figures/
