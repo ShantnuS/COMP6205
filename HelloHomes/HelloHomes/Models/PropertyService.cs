@@ -32,11 +32,7 @@ namespace HelloHomes.Models
 
         public IQueryable<Property> GetAll(int? count = null, int? page = null)
         {
-            var actualCount = count.GetValueOrDefault(10);
-
-            return _context.Property
-                        .Skip(actualCount * page.GetValueOrDefault(0))
-                        .Take(actualCount);
+            return _context.Set<Property>();
         }
 
         public Task<Property[]> GetAllAsync(int? count = null, int? page = null)
